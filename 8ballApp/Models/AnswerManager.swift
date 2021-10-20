@@ -1,0 +1,45 @@
+//
+//  AnswerManager.swift
+//  8ballApp
+//
+//  Created by Sergey Dvornik on 19.10.2021.
+//
+
+import Foundation
+
+protocol AnswerManagerDelegate: AnyObject {
+    func updateInterface(_: AnswerManager, with randomAnswer: RandomAnswer)
+}
+
+class AnswerManager {
+    
+    weak var delegate: AnswerManagerDelegate?
+    
+    // Get a random answer from the random answer generator
+    func fetchRandomAnswer() {
+        let urlString = "https://8ball.delegator.com/magic/JSON/%3Cam_i_superman%3E"
+        guard let url = URL(string: urlString) else { return }
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url) { data, response, error in
+            if let data = data {
+                if let randomAnswer = self.parseJSON(withData: data) {
+                    self.delegate?.updateInterface(self, with: randomAnswer)
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    // Decode JSON data
+    func parseJSON(withData data: Data) -> RandomAnswer? {
+        let decoder = JSONDecoder()
+        do {
+            let answerData = try decoder.decode(RandomAnswerData.self, from: data)
+            guard let randomAnswer = RandomAnswer(randomAnswerData: answerData) else { return nil }
+            return randomAnswer
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        return nil
+    }
+}
