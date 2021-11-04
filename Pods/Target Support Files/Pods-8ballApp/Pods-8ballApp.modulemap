@@ -1,6 +1,0 @@
-framework module Pods_8ballApp {
-  umbrella header "Pods-8ballApp-umbrella.h"
-
-  export *
-  module * { export * }
-}
