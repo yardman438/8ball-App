@@ -81,6 +81,7 @@
 		5E5CCCFD271F21D9001F7212 /* 8ballApp */ = {
 			isa = PBXGroup;
 			children = (
+				5E9B5F292739726C0099502E /* Network */,
 				5E5CCD12271F280D001F7212 /* Models */,
 				5E5CCD15271F2B47001F7212 /* Views */,
 				5E5CCD16271F2B52001F7212 /* ViewControllers */,
@@ -93,7 +94,6 @@
 		5E5CCD12271F280D001F7212 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5E5CCD13271F2836001F7212 /* AnswerManager.swift */,
 				5E5CCD1A271F32C6001F7212 /* RandomAnswer.swift */,
 				5E5CCD18271F2E4C001F7212 /* RandomAnswerData.swift */,
 			);
@@ -135,6 +135,14 @@
 				5E5CCD23271F5F61001F7212 /* CustomAnswerAlertController.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5E9B5F292739726C0099502E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				5E5CCD13271F2836001F7212 /* AnswerManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		B1736B132F2B16C73A79DCD7 /* Pods */ = {
