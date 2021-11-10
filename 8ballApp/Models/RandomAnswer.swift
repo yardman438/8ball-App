@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Get data from decoding API's JSON data and initialize to RandomAnswerData's properties
 struct RandomAnswer {
     let answerText: String
     let answerType: String

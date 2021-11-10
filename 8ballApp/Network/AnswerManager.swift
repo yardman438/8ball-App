@@ -7,16 +7,21 @@
 
 import Foundation
 
+protocol NetworkManager {
+    var delegate: AnswerManagerDelegate? { get set }
+    func fetchData()
+}
+
 protocol AnswerManagerDelegate: AnyObject {
     func updateInterface(_: AnswerManager, with randomAnswer: RandomAnswer)
 }
 
-class AnswerManager {
+class AnswerManager: NetworkManager {
     
     weak var delegate: AnswerManagerDelegate?
     
     // Get a random answer from the random answer generator
-    func fetchRandomAnswer() {
+    func fetchData() {
         let urlString = "https://8ball.delegator.com/magic/JSON/%3Cam_i_superman%3E"
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
@@ -31,7 +36,7 @@ class AnswerManager {
     }
     
     // Decode JSON data
-    func parseJSON(withData data: Data) -> RandomAnswer? {
+    private func parseJSON(withData data: Data) -> RandomAnswer? {
         let decoder = JSONDecoder()
         do {
             let answerData = try decoder.decode(RandomAnswerData.self, from: data)

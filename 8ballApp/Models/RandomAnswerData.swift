@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Get data from RandomAnswer
 struct RandomAnswerData: Codable {
     let magic: Magic
 }

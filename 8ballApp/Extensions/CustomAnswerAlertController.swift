@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension SettingsViewController {
+extension SettingsScreenViewController {
     
     // Make an alert controller for editing custom answers on the second screen.
     func presentCustomAnswerEditAlertController(withTitle title: String?, message: String?, style: UIAlertController.Style, completionHandler: @escaping (String) -> Void ) {

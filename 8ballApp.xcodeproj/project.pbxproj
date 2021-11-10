@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,8 +17,11 @@
 		5E5CCD14271F2836001F7212 /* AnswerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5CCD13271F2836001F7212 /* AnswerManager.swift */; };
 		5E5CCD19271F2E4C001F7212 /* RandomAnswerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5CCD18271F2E4C001F7212 /* RandomAnswerData.swift */; };
 		5E5CCD1B271F32C6001F7212 /* RandomAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5CCD1A271F32C6001F7212 /* RandomAnswer.swift */; };
-		5E5CCD1F271F4817001F7212 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5CCD1E271F4817001F7212 /* SettingsViewController.swift */; };
 		5E5CCD24271F5F61001F7212 /* CustomAnswerAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5CCD23271F5F61001F7212 /* CustomAnswerAlertController.swift */; };
+		5E9B5F2C273985FB0099502E /* CustomAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9B5F2B273985FB0099502E /* CustomAnswer.swift */; };
+		5E9B5F2E2739AF890099502E /* SettingsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9B5F2D2739AF890099502E /* SettingsScreenView.swift */; };
+		5E9B5F302739B09D0099502E /* SettingsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9B5F2F2739B09D0099502E /* SettingsScreenViewController.swift */; };
+		5E9B5F322739BE8D0099502E /* SettingsScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9B5F312739BE8D0099502E /* SettingsScreenTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,8 +37,11 @@
 		5E5CCD13271F2836001F7212 /* AnswerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerManager.swift; sourceTree = "<group>"; };
 		5E5CCD18271F2E4C001F7212 /* RandomAnswerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAnswerData.swift; sourceTree = "<group>"; };
 		5E5CCD1A271F32C6001F7212 /* RandomAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAnswer.swift; sourceTree = "<group>"; };
-		5E5CCD1E271F4817001F7212 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5E5CCD23271F5F61001F7212 /* CustomAnswerAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnswerAlertController.swift; sourceTree = "<group>"; };
+		5E9B5F2B273985FB0099502E /* CustomAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnswer.swift; sourceTree = "<group>"; };
+		5E9B5F2D2739AF890099502E /* SettingsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenView.swift; sourceTree = "<group>"; };
+		5E9B5F2F2739B09D0099502E /* SettingsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenViewController.swift; sourceTree = "<group>"; };
+		5E9B5F312739BE8D0099502E /* SettingsScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenTableViewCell.swift; sourceTree = "<group>"; };
 		7B686E88BC272317583FF2C3 /* Pods-8ballApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-8ballApp.debug.xcconfig"; path = "Target Support Files/Pods-8ballApp/Pods-8ballApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D912A59C906BA86BBFA239DF /* Pods-8ballApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-8ballApp.release.xcconfig"; path = "Target Support Files/Pods-8ballApp/Pods-8ballApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +87,7 @@
 		5E5CCCFD271F21D9001F7212 /* 8ballApp */ = {
 			isa = PBXGroup;
 			children = (
+				5E9B5F292739726C0099502E /* Network */,
 				5E5CCD12271F280D001F7212 /* Models */,
 				5E5CCD15271F2B47001F7212 /* Views */,
 				5E5CCD16271F2B52001F7212 /* ViewControllers */,
@@ -93,9 +100,9 @@
 		5E5CCD12271F280D001F7212 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5E5CCD13271F2836001F7212 /* AnswerManager.swift */,
-				5E5CCD18271F2E4C001F7212 /* RandomAnswerData.swift */,
 				5E5CCD1A271F32C6001F7212 /* RandomAnswer.swift */,
+				5E5CCD18271F2E4C001F7212 /* RandomAnswerData.swift */,
+				5E9B5F2B273985FB0099502E /* CustomAnswer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -105,6 +112,8 @@
 			children = (
 				5E5CCD04271F21D9001F7212 /* Main.storyboard */,
 				5E5CCD09271F21DB001F7212 /* LaunchScreen.storyboard */,
+				5E9B5F2D2739AF890099502E /* SettingsScreenView.swift */,
+				5E9B5F312739BE8D0099502E /* SettingsScreenTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -113,7 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				5E5CCD02271F21D9001F7212 /* MainViewController.swift */,
-				5E5CCD1E271F4817001F7212 /* SettingsViewController.swift */,
+				5E9B5F2F2739B09D0099502E /* SettingsScreenViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -137,13 +146,20 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		5E9B5F292739726C0099502E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				5E5CCD13271F2836001F7212 /* AnswerManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		B1736B132F2B16C73A79DCD7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				7B686E88BC272317583FF2C3 /* Pods-8ballApp.debug.xcconfig */,
 				D912A59C906BA86BBFA239DF /* Pods-8ballApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -263,9 +279,12 @@
 			files = (
 				5E5CCD24271F5F61001F7212 /* CustomAnswerAlertController.swift in Sources */,
 				5E5CCD19271F2E4C001F7212 /* RandomAnswerData.swift in Sources */,
+				5E9B5F302739B09D0099502E /* SettingsScreenViewController.swift in Sources */,
 				5E5CCD03271F21D9001F7212 /* MainViewController.swift in Sources */,
-				5E5CCD1F271F4817001F7212 /* SettingsViewController.swift in Sources */,
+				5E9B5F322739BE8D0099502E /* SettingsScreenTableViewCell.swift in Sources */,
 				5E5CCD1B271F32C6001F7212 /* RandomAnswer.swift in Sources */,
+				5E9B5F2E2739AF890099502E /* SettingsScreenView.swift in Sources */,
+				5E9B5F2C273985FB0099502E /* CustomAnswer.swift in Sources */,
 				5E5CCCFF271F21D9001F7212 /* AppDelegate.swift in Sources */,
 				5E5CCD01271F21D9001F7212 /* SceneDelegate.swift in Sources */,
 				5E5CCD14271F2836001F7212 /* AnswerManager.swift in Sources */,
