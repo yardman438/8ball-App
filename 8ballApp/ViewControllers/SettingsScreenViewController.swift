@@ -4,6 +4,7 @@
 //
 //  Created by Sergey Dvornik on 08.11.2021.
 //
+// swiftlint:disable trailing_whitespace
 
 import UIKit
 
@@ -12,14 +13,13 @@ class SettingsScreenViewController: UIViewController {
     // Create a variable model and get an array, which was created in CustomAnswer model
     private var customAnswers = CustomAnswers()
 
-    
-    // We create a computed property with which we check isViewLoaded for unintentional loading of the View when accessing this property. If the view is already loaded, we forcefully convert it to SettingScreenView
     private var settingsScreenView: SettingsScreenView! {
         guard isViewLoaded else { return nil }
+        // swiftlint:disable:next force_cast
         return (view as! SettingsScreenView)
     }
 
-    //MARK: - View lifecycle
+    // MARK: View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +28,16 @@ class SettingsScreenViewController: UIViewController {
     
     // User interaction with the interface
     @IBAction func addCustomAnswerButtonPressed(_ sender: UIButton) {
-        presentCustomAnswerEditAlertController(withTitle: "Enter your answer", message: nil, style: .alert) { [unowned self] answer in
+        presentCustomAnswerEditAlertController(withTitle: "Enter your answer",
+                                               message: nil,
+                                               style: .alert) { [unowned self] answer in
             customAnswers.customAnswersArray.append(answer)
             settingsScreenView.tableView.reloadData()
         }
     }
 }
 
-    //MARK: - Extensions
+    // MARK: Extensions
 
 private extension SettingsScreenViewController {
     func configure() {
@@ -50,6 +52,7 @@ extension SettingsScreenViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SettingsScreenTableViewCell
         cell.customAnswerLabel.text = customAnswers.customAnswersArray[indexPath.row]
         return cell
