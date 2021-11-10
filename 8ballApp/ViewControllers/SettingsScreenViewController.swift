@@ -10,7 +10,8 @@ import UIKit
 class SettingsScreenViewController: UIViewController {
     
     // Create a variable model and get an array, which was created in CustomAnswer model
-    private var customAnswersGroup = CustomAnswersArray.setCustomAnswersArray()
+    private var customAnswers = CustomAnswers()
+
     
     // We create a computed property with which we check isViewLoaded for unintentional loading of the View when accessing this property. If the view is already loaded, we forcefully convert it to SettingScreenView
     private var settingsScreenView: SettingsScreenView! {
@@ -28,7 +29,7 @@ class SettingsScreenViewController: UIViewController {
     // User interaction with the interface
     @IBAction func addCustomAnswerButtonPressed(_ sender: UIButton) {
         presentCustomAnswerEditAlertController(withTitle: "Enter your answer", message: nil, style: .alert) { [unowned self] answer in
-            customAnswersGroup.customAnswers.append(CustomAnswer(text: answer))
+            customAnswers.customAnswersArray.append(answer)
             settingsScreenView.tableView.reloadData()
         }
     }
@@ -45,12 +46,12 @@ private extension SettingsScreenViewController {
 
 extension SettingsScreenViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return customAnswersGroup.customAnswers.count
+        return customAnswers.customAnswersArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SettingsScreenTableViewCell
-        cell.customAnswerLabel.text = customAnswersGroup.customAnswers[indexPath.row].text
+        cell.customAnswerLabel.text = customAnswers.customAnswersArray[indexPath.row]
         return cell
     }
 }

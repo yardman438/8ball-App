@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Networking {
+protocol NetworkManager {
     var delegate: AnswerManagerDelegate? { get set }
     func fetchData()
 }
@@ -16,7 +16,7 @@ protocol AnswerManagerDelegate: AnyObject {
     func updateInterface(_: AnswerManager, with randomAnswer: RandomAnswer)
 }
 
-class AnswerManager: Networking {
+class AnswerManager: NetworkManager {
     
     weak var delegate: AnswerManagerDelegate?
     

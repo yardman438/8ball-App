@@ -12,24 +12,24 @@ class MainViewController: UIViewController {
     // User interface elements
     @IBOutlet weak var answerLabel: UILabel!
     
-    private var answerManager: Networking = AnswerManager()
+    var answerManager: NetworkManager?
     
     //MARK: - View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        answerManager.delegate = self
+        answerManager?.delegate = self
     }
     
     // Sending the request by shaking the device
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         guard motion == .motionShake else { return }
-        answerManager.fetchData()
+        answerManager?.fetchData()
     }
     
     // User interaction with the interface
     @IBAction func shakeButtonPressed(_ sender: UIButton) {
-        answerManager.fetchData()
+        answerManager?.fetchData()
     }
 }
 
