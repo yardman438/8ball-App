@@ -28,7 +28,7 @@ class SettingsScreenViewController: UIViewController {
     
     // User interaction with the interface
     @IBAction func addCustomAnswerButtonPressed(_ sender: UIButton) {
-        presentCustomAnswerEditAlertController(withTitle: "Enter your answer",
+        presentCustomAnswerEditAlertController(withTitle: L10n.alertTitle,
                                                message: nil,
                                                style: .alert) { [unowned self] answer in
             customAnswers.customAnswersArray.append(answer)
@@ -53,7 +53,7 @@ extension SettingsScreenViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // swiftlint:disable:next force_cast
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SettingsScreenTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: L10n.identifier, for: indexPath) as! SettingsScreenTableViewCell
         cell.customAnswerLabel.text = customAnswers.customAnswersArray[indexPath.row]
         return cell
     }

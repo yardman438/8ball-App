@@ -7,7 +7,7 @@ target '8ballApp' do
 
   # Pods for 8ballApp
 
-  pod 'Alamofire', '~> 5.4'
   pod 'SwiftLint'
+  pod 'SwiftGen', '~> 6.5.1'
 
 end

@@ -23,7 +23,7 @@ class AnswerManager: NetworkManager {
     
     // Get a random answer from the random answer generator
     func fetchData() {
-        let urlString = "https://8ball.delegator.com/magic/JSON/%3Cam_i_superman%3E"
+        let urlString = L10n.apiUrl
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, _, _ in

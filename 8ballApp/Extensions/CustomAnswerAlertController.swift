@@ -21,7 +21,7 @@ extension SettingsScreenViewController {
             textField.placeholder = customAnswers.randomElement()
         }
         
-        let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
+        let saveAction = UIAlertAction(title: L10n.alertSave, style: .default) { _ in
             let textField = alertController.textFields?.first
             guard let customAnswer = textField?.text else { return }
             if customAnswer != "" {
@@ -29,7 +29,7 @@ extension SettingsScreenViewController {
                 completionHandler(answer)
             }
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelAction = UIAlertAction(title: L10n.alertCancel, style: .cancel)
         
         alertController.addAction(saveAction)
         alertController.addAction(cancelAction)
