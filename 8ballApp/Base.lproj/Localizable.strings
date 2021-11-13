@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  8ballApp
+
+  Created by Sergey Dvornik on 11.11.2021.
+  
+*/
+
+//Additional
+"api-url" = "https://8ball.delegator.com/magic/JSON/question";
+
+//SettingsScreen
+"alert-title" = "Enter your answer";
+"alert-save" = "Save";
+"alert-cancel" = "Cancel";
+"identifier" = "cell";
+

@@ -4,6 +4,7 @@
 //
 //  Created by Sergey Dvornik on 19.10.2021.
 //
+// swiftlint:disable trailing_whitespace
 
 import Foundation
 
@@ -22,10 +23,10 @@ class AnswerManager: NetworkManager {
     
     // Get a random answer from the random answer generator
     func fetchData() {
-        let urlString = "https://8ball.delegator.com/magic/JSON/%3Cam_i_superman%3E"
+        let urlString = L10n.apiUrl
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { data, response, error in
+        let task = session.dataTask(with: url) { data, _, _ in
             if let data = data {
                 if let randomAnswer = self.parseJSON(withData: data) {
                     self.delegate?.updateInterface(self, with: randomAnswer)

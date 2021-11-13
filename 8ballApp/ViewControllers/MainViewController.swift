@@ -4,6 +4,7 @@
 //
 //  Created by Sergey Dvornik on 19.10.2021.
 //
+// swiftlint:disable trailing_whitespace
 
 import UIKit
 
@@ -14,7 +15,7 @@ class MainViewController: UIViewController {
     
     var answerManager: NetworkManager?
     
-    //MARK: - View lifecycle
+    // MARK: View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,7 @@ class MainViewController: UIViewController {
     }
 }
 
-    //MARK: - Extensions
+    // MARK: Extensions
 
 extension MainViewController: AnswerManagerDelegate {
     func updateInterface(_: AnswerManager, with randomAnswer: RandomAnswer) {
@@ -42,4 +43,3 @@ extension MainViewController: AnswerManagerDelegate {
         }
     }
 }
-
