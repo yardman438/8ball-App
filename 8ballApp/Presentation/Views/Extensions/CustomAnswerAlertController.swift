@@ -17,7 +17,7 @@ extension SettingsScreenViewController {
                                                 completionHandler: @escaping (String) -> Void ) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
         alertController.addTextField { textField in
-            let customAnswers = ["Yes, you can do it!", "Maybe don't", "This is gonna happen"]
+            let customAnswers = [L10n.yesyoucandoit, L10n.maybedont, L10n.thisisgonnahappen]
             textField.placeholder = customAnswers.randomElement()
         }
         
