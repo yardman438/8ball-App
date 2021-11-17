@@ -1,5 +1,5 @@
 strings:
-  inputs: 8ballApp/Base.lproj
+  inputs: 8ballApp/Resources/Base.lproj
   outputs:
     - templateName: structured-swift5
       output: 8ballApp/Resources/Strings.swift
