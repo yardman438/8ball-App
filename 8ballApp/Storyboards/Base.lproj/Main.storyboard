@@ -48,7 +48,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="F48-Io-jsk">
                             <imageReference key="image" image="gearshape" catalog="system" symbolScale="large"/>
                             <connections>
-                                <segue destination="Zwr-RF-Lna" kind="show" id="RfY-po-wwD"/>
+                                <segue destination="Zwr-RF-Lna" kind="show" destinationCreationSelector="injectToSettingsScreenViewController:" id="RfY-po-wwD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -63,8 +63,8 @@
         <!--Settings Screen View Controller-->
         <scene sceneID="53w-Oa-9ir">
             <objects>
-                <viewController id="Zwr-RF-Lna" customClass="SettingsScreenViewController" customModule="_ballApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2Q7-jX-hMw" customClass="SettingsScreenView" customModule="_ballApp" customModuleProvider="target">
+                <viewController storyboardIdentifier="SettingsScreenViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Zwr-RF-Lna" customClass="SettingsScreenViewController" customModule="_ballApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Q7-jX-hMw">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -87,14 +87,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" id="jjP-MR-HEX" customClass="SettingsScreenTableViewCell" customModule="_ballApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.333333969116211" width="358" height="60"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="358" height="60.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jjP-MR-HEX" id="VWn-6V-1yb">
-                                            <rect key="frame" x="0.0" y="0.0" width="358" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="358" height="60.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JA8-TK-a7I">
-                                                    <rect key="frame" x="20" y="19" width="318" height="22"/>
+                                                    <rect key="frame" x="20" y="19" width="318" height="22.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -126,11 +126,11 @@
                             <constraint firstItem="kgY-6N-bvT" firstAttribute="top" secondItem="ONu-TL-z09" secondAttribute="bottom" constant="15" id="svu-8T-Hxv"/>
                             <constraint firstItem="hZE-uc-QD7" firstAttribute="trailing" secondItem="kgY-6N-bvT" secondAttribute="trailing" constant="16" id="ua0-T5-waD"/>
                         </constraints>
-                        <connections>
-                            <outlet property="tableView" destination="kgY-6N-bvT" id="m8D-xQ-lAO"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="KbD-oq-X71"/>
+                    <connections>
+                        <outlet property="tableView" destination="kgY-6N-bvT" id="e5R-ji-kqJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwD-uB-8SC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

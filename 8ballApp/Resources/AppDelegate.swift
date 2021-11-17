@@ -4,7 +4,7 @@
 //
 //  Created by Sergey Dvornik on 19.10.2021.
 //
-// swiftlint:disable line_length
+// swiftlint:disable line_length trailing_whitespace
 
 import UIKit
 
@@ -18,10 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // swiftlint:disable:next force_cast
         let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BallViewController") as! BallViewController
         let navigationController = UINavigationController(rootViewController: mainVC)
+        
         let networkManager = RandomAnswerManager()
-        let model = BallModel(randomAnswerManager: networkManager)
-        let ballViewModel = BallViewModel(ballModel: model)
+        
+        let ballModel = BallModel(randomAnswerManager: networkManager)
+        let ballViewModel = BallViewModel(ballModel: ballModel)
         mainVC.ballViewModel = ballViewModel
+        
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         return true

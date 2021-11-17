@@ -20,12 +20,12 @@
 		5E641C8E273DA80700DE0972 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E641C8C273DA80700DE0972 /* Strings.swift */; };
 		5E641C90273DA82500DE0972 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E641C8F273DA82500DE0972 /* Assets.swift */; };
 		5E641C94273DA9D700DE0972 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E641C92273DA9D700DE0972 /* Localizable.strings */; };
-		5E9B5F2E2739AF890099502E /* SettingsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9B5F2D2739AF890099502E /* SettingsScreenView.swift */; };
 		5E9B5F302739B09D0099502E /* SettingsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9B5F2F2739B09D0099502E /* SettingsScreenViewController.swift */; };
 		5E9B5F322739BE8D0099502E /* SettingsScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9B5F312739BE8D0099502E /* SettingsScreenTableViewCell.swift */; };
 		5ED7B80C273FF6CE00E0A6FF /* BallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED7B80B273FF6CE00E0A6FF /* BallViewModel.swift */; };
 		5ED7B8132740F1FB00E0A6FF /* SettingsScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED7B8122740F1FB00E0A6FF /* SettingsScreenModel.swift */; };
 		5ED7B81A27412C7700E0A6FF /* SettingsScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED7B81927412C7700E0A6FF /* SettingsScreenViewModel.swift */; };
+		5EF5544D27454CBF008B9A85 /* InjectToSettingsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF5544C27454CBF008B9A85 /* InjectToSettingsScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,12 +45,12 @@
 		5E641C8C273DA80700DE0972 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		5E641C8F273DA82500DE0972 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		5E641C93273DA9D700DE0972 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		5E9B5F2D2739AF890099502E /* SettingsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenView.swift; sourceTree = "<group>"; };
 		5E9B5F2F2739B09D0099502E /* SettingsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenViewController.swift; sourceTree = "<group>"; };
 		5E9B5F312739BE8D0099502E /* SettingsScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenTableViewCell.swift; sourceTree = "<group>"; };
 		5ED7B80B273FF6CE00E0A6FF /* BallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallViewModel.swift; sourceTree = "<group>"; };
 		5ED7B8122740F1FB00E0A6FF /* SettingsScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenModel.swift; sourceTree = "<group>"; };
 		5ED7B81927412C7700E0A6FF /* SettingsScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenViewModel.swift; sourceTree = "<group>"; };
+		5EF5544C27454CBF008B9A85 /* InjectToSettingsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectToSettingsScreenViewController.swift; sourceTree = "<group>"; };
 		7B686E88BC272317583FF2C3 /* Pods-8ballApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-8ballApp.debug.xcconfig"; path = "Target Support Files/Pods-8ballApp/Pods-8ballApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D912A59C906BA86BBFA239DF /* Pods-8ballApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-8ballApp.release.xcconfig"; path = "Target Support Files/Pods-8ballApp/Pods-8ballApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,43 +97,12 @@
 		5E5CCCFD271F21D9001F7212 /* 8ballApp */ = {
 			isa = PBXGroup;
 			children = (
-				5ED7B80F27405BDC00E0A6FF /* Data */,
-				5ED7B81527411B4800E0A6FF /* Application */,
-				5ED7B8162741210C00E0A6FF /* Presentation */,
+				5EF5544327452752008B9A85 /* Flows */,
+				5E9B5F292739726C0099502E /* Services */,
+				5ED7B809273FE34F00E0A6FF /* Storyboards */,
 				5EE10C3B273D5DB4001B2B81 /* Resources */,
-				5E5CCD17271F2B84001F7212 /* SupportingFiles */,
 			);
 			path = 8ballApp;
-			sourceTree = "<group>";
-		};
-		5E5CCD12271F280D001F7212 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				5E5CCD1A271F32C6001F7212 /* BallModel.swift */,
-				5ED7B8122740F1FB00E0A6FF /* SettingsScreenModel.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		5E5CCD15271F2B47001F7212 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				5E5CCD02271F21D9001F7212 /* BallViewController.swift */,
-				5E9B5F2F2739B09D0099502E /* SettingsScreenViewController.swift */,
-				5E9B5F2D2739AF890099502E /* SettingsScreenView.swift */,
-				5E9B5F312739BE8D0099502E /* SettingsScreenTableViewCell.swift */,
-				5E5CCD20271F4A38001F7212 /* Extensions */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		5E5CCD17271F2B84001F7212 /* SupportingFiles */ = {
-			isa = PBXGroup;
-			children = (
-				5E5CCCFE271F21D9001F7212 /* AppDelegate.swift */,
-				5E5CCD0C271F21DB001F7212 /* Info.plist */,
-			);
-			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		5E5CCD20271F4A38001F7212 /* Extensions */ = {
@@ -147,18 +116,10 @@
 		5E9B5F292739726C0099502E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				5E5CCD18271F2E4C001F7212 /* ApiResponseData.swift */,
 				5E5CCD13271F2836001F7212 /* RandomAnswerManager.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		5ED7B808273FE34000E0A6FF /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				5ED7B80B273FF6CE00E0A6FF /* BallViewModel.swift */,
-				5ED7B81927412C7700E0A6FF /* SettingsScreenViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		5ED7B809273FE34F00E0A6FF /* Storyboards */ = {
@@ -170,50 +131,65 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		5ED7B80F27405BDC00E0A6FF /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				5ED7B81427411B2400E0A6FF /* Models */,
-				5E9B5F292739726C0099502E /* Services */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		5ED7B81427411B2400E0A6FF /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				5E5CCD18271F2E4C001F7212 /* ApiResponseData.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		5ED7B81527411B4800E0A6FF /* Application */ = {
-			isa = PBXGroup;
-			children = (
-				5E5CCD12271F280D001F7212 /* Models */,
-			);
-			path = Application;
-			sourceTree = "<group>";
-		};
-		5ED7B8162741210C00E0A6FF /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				5ED7B809273FE34F00E0A6FF /* Storyboards */,
-				5ED7B808273FE34000E0A6FF /* ViewModels */,
-				5E5CCD15271F2B47001F7212 /* Views */,
-			);
-			path = Presentation;
-			sourceTree = "<group>";
-		};
 		5EE10C3B273D5DB4001B2B81 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5E5CCCFE271F21D9001F7212 /* AppDelegate.swift */,
+				5E5CCD0C271F21DB001F7212 /* Info.plist */,
 				5E641C92273DA9D700DE0972 /* Localizable.strings */,
 				5E641C8F273DA82500DE0972 /* Assets.swift */,
 				5E641C8C273DA80700DE0972 /* Strings.swift */,
 				5E5CCD07271F21DB001F7212 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		5EF5544327452752008B9A85 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				5EF55444274527FD008B9A85 /* Ball */,
+				5EF5544527452804008B9A85 /* Settings */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		5EF55444274527FD008B9A85 /* Ball */ = {
+			isa = PBXGroup;
+			children = (
+				5E5CCD1A271F32C6001F7212 /* BallModel.swift */,
+				5ED7B80B273FF6CE00E0A6FF /* BallViewModel.swift */,
+				5E5CCD02271F21D9001F7212 /* BallViewController.swift */,
+				5EF5544B27454CAB008B9A85 /* Extensions */,
+			);
+			path = Ball;
+			sourceTree = "<group>";
+		};
+		5EF5544527452804008B9A85 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5ED7B8122740F1FB00E0A6FF /* SettingsScreenModel.swift */,
+				5ED7B81927412C7700E0A6FF /* SettingsScreenViewModel.swift */,
+				5E9B5F2F2739B09D0099502E /* SettingsScreenViewController.swift */,
+				5EF554462745280B008B9A85 /* Cells */,
+				5E5CCD20271F4A38001F7212 /* Extensions */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		5EF554462745280B008B9A85 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5E9B5F312739BE8D0099502E /* SettingsScreenTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		5EF5544B27454CAB008B9A85 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5EF5544C27454CBF008B9A85 /* InjectToSettingsScreenViewController.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		B1736B132F2B16C73A79DCD7 /* Pods */ = {
@@ -368,7 +344,7 @@
 				5E9B5F322739BE8D0099502E /* SettingsScreenTableViewCell.swift in Sources */,
 				5ED7B8132740F1FB00E0A6FF /* SettingsScreenModel.swift in Sources */,
 				5E5CCD1B271F32C6001F7212 /* BallModel.swift in Sources */,
-				5E9B5F2E2739AF890099502E /* SettingsScreenView.swift in Sources */,
+				5EF5544D27454CBF008B9A85 /* InjectToSettingsScreenViewController.swift in Sources */,
 				5E641C90273DA82500DE0972 /* Assets.swift in Sources */,
 				5E5CCCFF271F21D9001F7212 /* AppDelegate.swift in Sources */,
 				5E641C8E273DA80700DE0972 /* Strings.swift in Sources */,
@@ -530,7 +506,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KSGY463497;
-				INFOPLIST_FILE = 8ballApp/SupportingFiles/Info.plist;
+				INFOPLIST_FILE = 8ballApp/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -550,7 +526,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KSGY463497;
-				INFOPLIST_FILE = 8ballApp/SupportingFiles/Info.plist;
+				INFOPLIST_FILE = 8ballApp/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
