@@ -8,12 +8,10 @@
 import UIKit
 
 extension BallViewController {
-    @IBSegueAction func injectToSettingsScreenViewController(_ coder: NSCoder) -> UIViewController {
-
-        let destinationViewController = SettingsScreenViewController(coder: coder)!
+    func injectToSettingsScreenViewController() -> UIViewController {
+        let destinationViewController = SettingsScreenViewController()
         let settingsScreenViewModel = SettingsScreenViewModel(model: SettingsScreenModel())
-
         destinationViewController.settingsScreenViewModel = settingsScreenViewModel
         return destinationViewController
-   }
+    }
 }
