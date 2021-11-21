@@ -82,7 +82,7 @@ extension SettingsScreenViewController {
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(addAnswerButton.snp.bottom).inset(-15)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
-            make.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing).inset(16)
+            make.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing).inset(32)
             make.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading).inset(16)
         }
     }

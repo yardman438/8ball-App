@@ -15,7 +15,7 @@ class BallViewController: UIViewController {
     private let shakeButton = UIButton(type: .system)
     private let magicBallImage = UIImage(asset: Asset.predictBall)
     
-    var ballViewModel: BallViewModel
+    private var ballViewModel: BallViewModel
     
     init(viewModel: BallViewModel) {
         self.ballViewModel = viewModel
@@ -120,8 +120,7 @@ extension BallViewController {
         view.addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
             make.center.equalTo(self.view.safeAreaLayoutGuide.snp.center)
-            make.height.equalTo(600)
-            make.width.equalTo(600)
+            make.height.width.equalTo(430)
         }
     }
 }
