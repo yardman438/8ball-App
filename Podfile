@@ -9,5 +9,6 @@ target '8ballApp' do
 
   pod 'SwiftLint'
   pod 'SwiftGen', '~> 6.5.1'
+  pod 'SnapKit', '~> 5.0.1'
 
 end

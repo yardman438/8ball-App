@@ -3,14 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		249229A0525546EFF24C709E /* Pods_8ballApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5621C7CA2AB69866DE3C0509 /* Pods_8ballApp.framework */; };
 		5E5CCCFF271F21D9001F7212 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5CCCFE271F21D9001F7212 /* AppDelegate.swift */; };
 		5E5CCD03271F21D9001F7212 /* BallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5CCD02271F21D9001F7212 /* BallViewController.swift */; };
-		5E5CCD06271F21D9001F7212 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E5CCD04271F21D9001F7212 /* Main.storyboard */; };
 		5E5CCD08271F21DB001F7212 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E5CCD07271F21DB001F7212 /* Assets.xcassets */; };
 		5E5CCD0B271F21DB001F7212 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E5CCD09271F21DB001F7212 /* LaunchScreen.storyboard */; };
 		5E5CCD14271F2836001F7212 /* RandomAnswerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5CCD13271F2836001F7212 /* RandomAnswerManager.swift */; };
@@ -21,11 +20,11 @@
 		5E641C90273DA82500DE0972 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E641C8F273DA82500DE0972 /* Assets.swift */; };
 		5E641C94273DA9D700DE0972 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E641C92273DA9D700DE0972 /* Localizable.strings */; };
 		5E9B5F302739B09D0099502E /* SettingsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9B5F2F2739B09D0099502E /* SettingsScreenViewController.swift */; };
-		5E9B5F322739BE8D0099502E /* SettingsScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9B5F312739BE8D0099502E /* SettingsScreenTableViewCell.swift */; };
 		5ED7B80C273FF6CE00E0A6FF /* BallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED7B80B273FF6CE00E0A6FF /* BallViewModel.swift */; };
 		5ED7B8132740F1FB00E0A6FF /* SettingsScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED7B8122740F1FB00E0A6FF /* SettingsScreenModel.swift */; };
 		5ED7B81A27412C7700E0A6FF /* SettingsScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED7B81927412C7700E0A6FF /* SettingsScreenViewModel.swift */; };
 		5EF5544D27454CBF008B9A85 /* InjectToSettingsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF5544C27454CBF008B9A85 /* InjectToSettingsScreenViewController.swift */; };
+		5EF5544F27467AB9008B9A85 /* SettingsScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF5544E27467AB9008B9A85 /* SettingsScreenTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +32,6 @@
 		5E5CCCFB271F21D9001F7212 /* 8ballApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 8ballApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E5CCCFE271F21D9001F7212 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E5CCD02271F21D9001F7212 /* BallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallViewController.swift; sourceTree = "<group>"; };
-		5E5CCD05271F21D9001F7212 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5E5CCD07271F21DB001F7212 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E5CCD0A271F21DB001F7212 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E5CCD0C271F21DB001F7212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,11 +44,11 @@
 		5E641C8F273DA82500DE0972 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		5E641C93273DA9D700DE0972 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5E9B5F2F2739B09D0099502E /* SettingsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenViewController.swift; sourceTree = "<group>"; };
-		5E9B5F312739BE8D0099502E /* SettingsScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenTableViewCell.swift; sourceTree = "<group>"; };
 		5ED7B80B273FF6CE00E0A6FF /* BallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallViewModel.swift; sourceTree = "<group>"; };
 		5ED7B8122740F1FB00E0A6FF /* SettingsScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenModel.swift; sourceTree = "<group>"; };
 		5ED7B81927412C7700E0A6FF /* SettingsScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenViewModel.swift; sourceTree = "<group>"; };
 		5EF5544C27454CBF008B9A85 /* InjectToSettingsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectToSettingsScreenViewController.swift; sourceTree = "<group>"; };
+		5EF5544E27467AB9008B9A85 /* SettingsScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenTableViewCell.swift; sourceTree = "<group>"; };
 		7B686E88BC272317583FF2C3 /* Pods-8ballApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-8ballApp.debug.xcconfig"; path = "Target Support Files/Pods-8ballApp/Pods-8ballApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D912A59C906BA86BBFA239DF /* Pods-8ballApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-8ballApp.release.xcconfig"; path = "Target Support Files/Pods-8ballApp/Pods-8ballApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,7 +123,6 @@
 		5ED7B809273FE34F00E0A6FF /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				5E5CCD04271F21D9001F7212 /* Main.storyboard */,
 				5E5CCD09271F21DB001F7212 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -179,7 +176,7 @@
 		5EF554462745280B008B9A85 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				5E9B5F312739BE8D0099502E /* SettingsScreenTableViewCell.swift */,
+				5EF5544E27467AB9008B9A85 /* SettingsScreenTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -214,6 +211,7 @@
 				5E5CCCF7271F21D9001F7212 /* Sources */,
 				5E5CCCF8271F21D9001F7212 /* Frameworks */,
 				5E5CCCF9271F21D9001F7212 /* Resources */,
+				51FFFD557D15BFC6CF7BFF79 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -264,13 +262,29 @@
 				5E5CCD0B271F21DB001F7212 /* LaunchScreen.storyboard in Resources */,
 				5E641C94273DA9D700DE0972 /* Localizable.strings in Resources */,
 				5E5CCD08271F21DB001F7212 /* Assets.xcassets in Resources */,
-				5E5CCD06271F21D9001F7212 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		51FFFD557D15BFC6CF7BFF79 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-8ballApp/Pods-8ballApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-8ballApp/Pods-8ballApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-8ballApp/Pods-8ballApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		52271C8D25E6FF3F4118AFD6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -341,9 +355,9 @@
 				5E9B5F302739B09D0099502E /* SettingsScreenViewController.swift in Sources */,
 				5ED7B80C273FF6CE00E0A6FF /* BallViewModel.swift in Sources */,
 				5E5CCD03271F21D9001F7212 /* BallViewController.swift in Sources */,
-				5E9B5F322739BE8D0099502E /* SettingsScreenTableViewCell.swift in Sources */,
 				5ED7B8132740F1FB00E0A6FF /* SettingsScreenModel.swift in Sources */,
 				5E5CCD1B271F32C6001F7212 /* BallModel.swift in Sources */,
+				5EF5544F27467AB9008B9A85 /* SettingsScreenTableViewCell.swift in Sources */,
 				5EF5544D27454CBF008B9A85 /* InjectToSettingsScreenViewController.swift in Sources */,
 				5E641C90273DA82500DE0972 /* Assets.swift in Sources */,
 				5E5CCCFF271F21D9001F7212 /* AppDelegate.swift in Sources */,
@@ -355,14 +369,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5E5CCD04271F21D9001F7212 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5E5CCD05271F21D9001F7212 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5E5CCD09271F21DB001F7212 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -10,12 +10,16 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
+  /// Add custom answer
+  internal static let addButtonCTA = L10n.tr("Localizable", "add-buttonCTA")
   /// Cancel
   internal static let alertCancel = L10n.tr("Localizable", "alert-cancel")
   /// Save
   internal static let alertSave = L10n.tr("Localizable", "alert-save")
   /// Enter your answer
   internal static let alertTitle = L10n.tr("Localizable", "alert-title")
+  /// Have a question?
+  internal static let bootQuestion = L10n.tr("Localizable", "boot-question")
   /// from API
   internal static let fromAPI = L10n.tr("Localizable", "fromAPI")
   /// cell
@@ -26,14 +30,20 @@ internal enum L10n {
   internal static let ithinkitsyes = L10n.tr("Localizable", "ithinkitsyes")
   /// Just do it!
   internal static let justdoit = L10n.tr("Localizable", "justdoit")
+  /// Shake it or tap here!
+  internal static let mainButtonCTA = L10n.tr("Localizable", "main-buttonCTA")
   /// Maybe don't
   internal static let maybedont = L10n.tr("Localizable", "maybedont")
   /// No.
   internal static let no = L10n.tr("Localizable", "no")
+  /// Custom answers
+  internal static let screenTitle = L10n.tr("Localizable", "screen-title")
   /// Shake it again.
   internal static let shakeitagain = L10n.tr("Localizable", "shakeitagain")
   /// This is gonna happen
   internal static let thisisgonnahappen = L10n.tr("Localizable", "thisisgonnahappen")
+  /// 8 BALL
+  internal static let title = L10n.tr("Localizable", "title")
   /// Yes, you can do it!
   internal static let yesyoucandoit = L10n.tr("Localizable", "yesyoucandoit")
 }
