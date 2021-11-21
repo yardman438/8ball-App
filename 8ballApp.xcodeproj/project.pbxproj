@@ -47,6 +47,7 @@
 		5ED7B80B273FF6CE00E0A6FF /* BallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallViewModel.swift; sourceTree = "<group>"; };
 		5ED7B8122740F1FB00E0A6FF /* SettingsScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenModel.swift; sourceTree = "<group>"; };
 		5ED7B81927412C7700E0A6FF /* SettingsScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenViewModel.swift; sourceTree = "<group>"; };
+		5EE72D18274AFCB400CFB886 /* homework6-Concurrency.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "homework6-Concurrency.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5EF5544C27454CBF008B9A85 /* InjectToSettingsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectToSettingsScreenViewController.swift; sourceTree = "<group>"; };
 		5EF5544E27467AB9008B9A85 /* SettingsScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenTableViewCell.swift; sourceTree = "<group>"; };
 		7B686E88BC272317583FF2C3 /* Pods-8ballApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-8ballApp.debug.xcconfig"; path = "Target Support Files/Pods-8ballApp/Pods-8ballApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -78,6 +79,7 @@
 			children = (
 				5E641C8A273DA5F500DE0972 /* swiftgen.yml */,
 				5E5CCCFD271F21D9001F7212 /* 8ballApp */,
+				5EE72D17274AFC5500CFB886 /* homework6-Concurrency */,
 				5E5CCCFC271F21D9001F7212 /* Products */,
 				B1736B132F2B16C73A79DCD7 /* Pods */,
 				432468090D40900B9668B8B3 /* Frameworks */,
@@ -139,6 +141,14 @@
 				5E5CCD07271F21DB001F7212 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		5EE72D17274AFC5500CFB886 /* homework6-Concurrency */ = {
+			isa = PBXGroup;
+			children = (
+				5EE72D18274AFCB400CFB886 /* homework6-Concurrency.playground */,
+			);
+			path = "homework6-Concurrency";
 			sourceTree = "<group>";
 		};
 		5EF5544327452752008B9A85 /* Flows */ = {
