@@ -36,6 +36,8 @@ class BallViewController: UIViewController {
         ballViewModel.updateInterface { (answer) in
             DispatchQueue.main.async {
                 self.answerLabel.text = answer
+                let date = Date()
+                self.ballViewModel.saveAnswer(answer, date: date)
             }
         }
     }
@@ -44,13 +46,10 @@ class BallViewController: UIViewController {
         ballViewModel.updateInterface { (answer) in
             DispatchQueue.main.async {
                 self.answerLabel.text = answer
+                let date = Date()
+                self.ballViewModel.saveAnswer(answer, date: date)
             }
         }
-    }
-    
-    @objc private func settingsButtonPressed() {
-        let settingsScreenViewController = injectToSettingsScreenViewController()
-        navigationController?.pushViewController(settingsScreenViewController, animated: true)
     }
 }
 
@@ -74,11 +73,6 @@ extension BallViewController {
         guard let navBar = navigationController?.navigationBar else { return }
         navBar.setBackgroundImage(UIImage(), for: .default)
         navBar.shadowImage = UIImage()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(asset: Asset.settings),
-                                                            style: .done,
-                                                            target: self,
-                                                            action: #selector(settingsButtonPressed))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor(asset: Asset.buttonColor)
     }
     
     // The function to setup the main label on the screen

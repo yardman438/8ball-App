@@ -9,17 +9,28 @@
 import Foundation
 
 class SettingsScreenModel {
-    private var customAnswers = [L10n.justdoit,
-                                 L10n.ithinkitsyes,
-                                 L10n.no,
-                                 L10n.idontthinkso,
-                                 L10n.shakeitagain]
     
-    func sendCustomAnswers() -> [String] {
-        return customAnswers
+    private let customAnswerManager: CustomAnswerManager
+    
+    init(localManager: CustomAnswerManager) {
+        self.customAnswerManager = localManager
+    }
+    
+    func loadDefaultAnswers() -> [CustomAnswer?] {
+        customAnswerManager.loadDefaultAnswers()
+        return customAnswerManager.customAnswers
+    }
+    
+    func sendCustomAnswers() -> [CustomAnswer?] {
+        customAnswerManager.fetchAnswers()
+        return customAnswerManager.customAnswers
     }
     
     func addNewAnswer(_ answer: String) {
-        return customAnswers.append(answer)
+        customAnswerManager.saveAnswer(withText: answer)
+    }
+    
+    func deleteAnswer(_ selectedAnswer: CustomAnswer) {
+        customAnswerManager.deleteAnswer(selectedAnswer)
     }
 }

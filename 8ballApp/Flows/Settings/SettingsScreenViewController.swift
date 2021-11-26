@@ -7,6 +7,7 @@
 // swiftlint:disable trailing_whitespace
 
 import UIKit
+import SnapKit
 
 class SettingsScreenViewController: UIViewController {
     
@@ -14,7 +15,22 @@ class SettingsScreenViewController: UIViewController {
     private let addAnswerButton = UIButton(type: .system)
     private let tableView = UITableView()
     
-    var settingsScreenViewModel: SettingsScreenViewModel!
+    var settingsScreenViewModel: SettingsScreenViewModel
+    
+    init(viewModel: SettingsScreenViewModel) {
+        self.settingsScreenViewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        settingsScreenViewModel.loadDefaultAnswers()
+        tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +55,18 @@ extension SettingsScreenViewController {
     // The main function to setup interface
     private func setupInterface() {
         view.backgroundColor = UIColor(asset: Asset.backgroundColor)
-        navigationController?.navigationBar.tintColor = UIColor(asset: Asset.buttonColor)
         
+        setupNavigationBar()
         setupCustomAnswerLabel()
         setupAddAnswerButton()
         setupTableView()
+    }
+    
+    private func setupNavigationBar() {
+        self.title = L10n.settingsTitle
+        guard let navBar = navigationController?.navigationBar else { return }
+        navBar.setBackgroundImage(UIImage(), for: .default)
+        navBar.shadowImage = UIImage()
     }
     
     // The function to setup the title on the screen
@@ -69,7 +92,7 @@ extension SettingsScreenViewController {
         view.addSubview(addAnswerButton)
         addAnswerButton.snp.makeConstraints { (make) in
             make.centerX.equalTo(self.view.safeAreaLayoutGuide.snp.centerX)
-            make.top.equalTo(customAnswerLabel.snp.bottom).inset(-15)
+            make.top.equalTo(customAnswerLabel.snp.bottom).offset(15)
             make.height.equalTo(34)
             make.width.equalTo(159)
         }
@@ -80,7 +103,7 @@ extension SettingsScreenViewController {
     private func setupTableView() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(addAnswerButton.snp.bottom).inset(-15)
+            make.top.equalTo(addAnswerButton.snp.bottom).offset(15)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
             make.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing).inset(32)
             make.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading).inset(16)
@@ -110,7 +133,16 @@ extension SettingsScreenViewController: UITableViewDelegate, UITableViewDataSour
                 withIdentifier: SettingsScreenTableViewCell.identifier,
                 for: indexPath) as? SettingsScreenTableViewCell else { return UITableViewCell() }
         let customAnswer = settingsScreenViewModel.updateInterface()[indexPath.row]
-        cell.configureLabel(text: customAnswer)
+        guard let customAnswerText = customAnswer?.text else { return cell }
+        cell.configureLabel(text: customAnswerText)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        guard let selectedAnswer = settingsScreenViewModel.updateInterface()[indexPath.row],
+              editingStyle == .delete else { return }
+        settingsScreenViewModel.deleteAnswer(selectedAnswer)
+        self.tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 }

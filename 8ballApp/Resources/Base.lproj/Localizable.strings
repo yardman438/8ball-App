@@ -8,6 +8,7 @@
 
 //Services
 "fromAPI" = "from API";
+"defaults-key" = "defaultAnswersArray";
 
 //CustomAnswers
 "justdoit" = "Just do it!";
@@ -25,9 +26,14 @@
 "main-buttonCTA" = "Shake it or tap here!";
 
 //SettingsScreenViewController
+"settings-title" = "Settings";
 "alert-title" = "Enter your answer";
 "alert-save" = "Save";
 "alert-cancel" = "Cancel";
 "identifier" = "cell";
 "screen-title" = "Custom answers";
 "add-buttonCTA" = "Add custom answer";
+
+//HistoryScreenViewController
+"history-title" = "History";
+"history-identifier" = "historyCell";

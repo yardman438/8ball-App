@@ -9,10 +9,11 @@
 import Foundation
 
 class BallViewModel {
+    
     private let ballModel: BallModel
     
-    init(ballModel: BallModel) {
-        self.ballModel = ballModel
+    init(model: BallModel) {
+        self.ballModel = model
     }
     
     func updateInterface(completion: @escaping (_ answer: String?) -> Void) {
@@ -20,5 +21,9 @@ class BallViewModel {
             let formattedAnswer = answer?.uppercased()
             completion(formattedAnswer)
         }
+    }
+    
+    func saveAnswer(_ answer: String?, date: Date?) {
+        ballModel.saveAnswer(answer, date: date)
     }
 }
