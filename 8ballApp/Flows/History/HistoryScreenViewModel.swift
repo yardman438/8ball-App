@@ -18,15 +18,16 @@ class HistoryScreenViewModel {
         self.answersHistory = model.sendAnswers()
     }
     
-    func numberOfAnswer() -> Int {
-        return answersHistory.count
-    }
-    
     func updateInterface() {
         answersHistory = historyScreenModel.sendAnswers()
     }
     
     func deleteAnswer(_ selectedAnswer: Answer) {
         historyScreenModel.deleteAnswer(selectedAnswer)
+        while answersHistory.contains(selectedAnswer) {
+            if let answerToRemoveIndex = answersHistory.firstIndex(of: selectedAnswer) {
+                answersHistory.remove(at: answerToRemoveIndex)
+            }
+        }
     }
 }

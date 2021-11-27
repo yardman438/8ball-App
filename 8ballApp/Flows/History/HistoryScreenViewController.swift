@@ -74,12 +74,13 @@ extension HistoryScreenViewController {
         tableView.allowsSelection = false
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = 50
     }
 }
 
 extension HistoryScreenViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return historyScreenViewModel.numberOfAnswer()
+        return historyScreenViewModel.answersHistory.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -90,7 +91,7 @@ extension HistoryScreenViewController: UITableViewDelegate, UITableViewDataSourc
         guard let answerText = answer?.text, let date = answer?.date else { return cell }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        cell.configureLabel(text: answerText + " " + dateFormatter.string(from: date))
+        cell.configureLabel(text: answerText, date: dateFormatter.string(from: date))
         return cell
     }
     
@@ -100,11 +101,6 @@ extension HistoryScreenViewController: UITableViewDelegate, UITableViewDataSourc
         guard let selectedAnswer = historyScreenViewModel.answersHistory[indexPath.row],
               editingStyle == .delete else { return }
         historyScreenViewModel.deleteAnswer(selectedAnswer)
-        while historyScreenViewModel.answersHistory.contains(selectedAnswer) {
-            if let answerToRemoveIndex = historyScreenViewModel.answersHistory.firstIndex(of: selectedAnswer) {
-                historyScreenViewModel.answersHistory.remove(at: answerToRemoveIndex)
-            }
-        }
         self.tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 }

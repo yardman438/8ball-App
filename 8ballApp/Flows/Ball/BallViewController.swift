@@ -37,7 +37,7 @@ class BallViewController: UIViewController {
             DispatchQueue.main.async {
                 self.answerLabel.text = answer
                 let date = Date()
-                self.ballViewModel.saveAnswer(answer, date: date)
+                self.ballViewModel.saveAnswer(answer, date)
             }
         }
     }
@@ -47,7 +47,7 @@ class BallViewController: UIViewController {
             DispatchQueue.main.async {
                 self.answerLabel.text = answer
                 let date = Date()
-                self.ballViewModel.saveAnswer(answer, date: date)
+                self.ballViewModel.saveAnswer(answer, date)
             }
         }
     }

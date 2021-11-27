@@ -120,6 +120,7 @@ extension SettingsScreenViewController {
         tableView.allowsSelection = false
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = 50
     }
 }
 

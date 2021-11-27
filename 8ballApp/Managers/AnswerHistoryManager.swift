@@ -37,11 +37,6 @@ class AnswerHistoryManager {
 
         do {
             try context.save()
-            while answers.contains(selectedAnswer) {
-                if let answerToRemoveIndex = answers.firstIndex(of: selectedAnswer) {
-                    answers.remove(at: answerToRemoveIndex)
-                }
-            }
         } catch let error as NSError {
             print(error.localizedDescription)
         }

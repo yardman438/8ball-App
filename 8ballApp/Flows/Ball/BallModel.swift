@@ -24,7 +24,7 @@ class BallModel {
         }
     }
     
-    func saveAnswer(_ answer: String?, date: Date?) {
+    func saveAnswer(_ answer: String?, _ date: Date?) {
         answerHistoryManager.saveAnswer(withText: answer, date: date)
     }
 }

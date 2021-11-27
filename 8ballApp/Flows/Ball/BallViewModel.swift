@@ -23,7 +23,7 @@ class BallViewModel {
         }
     }
     
-    func saveAnswer(_ answer: String?, date: Date?) {
-        ballModel.saveAnswer(answer, date: date)
+    func saveAnswer(_ answer: String?, _ date: Date?) {
+        ballModel.saveAnswer(answer, date)
     }
 }
