@@ -36,8 +36,6 @@ class BallViewController: UIViewController {
         ballViewModel.updateInterface { (answer) in
             DispatchQueue.main.async {
                 self.answerLabel.text = answer
-                let date = Date()
-                self.ballViewModel.saveAnswer(answer, date)
             }
         }
     }
@@ -46,8 +44,6 @@ class BallViewController: UIViewController {
         ballViewModel.updateInterface { (answer) in
             DispatchQueue.main.async {
                 self.answerLabel.text = answer
-                let date = Date()
-                self.ballViewModel.saveAnswer(answer, date)
             }
         }
     }

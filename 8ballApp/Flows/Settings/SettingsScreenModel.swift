@@ -10,27 +10,20 @@ import Foundation
 
 class SettingsScreenModel {
     
-    private let customAnswerManager: CustomAnswerManager
+    private let dbService: DBService
+    private let userDefaults: UserDefaultsManager
     
-    init(localManager: CustomAnswerManager) {
-        self.customAnswerManager = localManager
+    init(dbService: DBService, userDefaults: UserDefaultsManager) {
+        self.dbService = dbService
+        self.userDefaults = userDefaults
     }
     
-    func loadDefaultAnswers() -> [CustomAnswer?] {
-        customAnswerManager.loadDefaultAnswers()
-        return customAnswerManager.customAnswers
+    func loadDefaultAnswers() -> [String] {
+        return userDefaults.defaultAnswersArray
     }
     
-    func sendCustomAnswers() -> [CustomAnswer?] {
-        customAnswerManager.fetchAnswers()
-        return customAnswerManager.customAnswers
-    }
-    
-    func addNewAnswer(_ answer: String) {
-        customAnswerManager.saveAnswer(withText: answer)
-    }
-    
-    func deleteAnswer(_ selectedAnswer: CustomAnswer) {
-        customAnswerManager.deleteAnswer(selectedAnswer)
+    func saveAnswers(_ answer: Answer) {
+        let managedAnswer = answer.toManaged(isLocal: true)
+        dbService.saveAnswers(answers: [managedAnswer])
     }
 }

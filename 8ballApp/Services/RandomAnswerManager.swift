@@ -9,19 +9,13 @@
 import Foundation
 
 protocol NetworkManager {
-    func fetchData(completion: @escaping (_ answer: String?) -> Void)
+    func fetchData(completion: @escaping (_ answer: Answer?) -> Void)
 }
 
 class RandomAnswerManager: NetworkManager {
-    
-    var answer = L10n.fromAPI
-    
-    func fetchData(completion: @escaping (_ answer: String?) -> Void) {
 
-        guard answer == L10n.fromAPI else {
-            completion(answer)
-            return
-        }
+    func fetchData(completion: @escaping (_ answer: Answer?) -> Void) {
+
         guard let url = URL(string: "https://8ball.delegator.com/magic/JSON/question") else { return }
         URLSession.shared.dataTask(with: url) { (data, _, _) in
             guard let data = data else { return }
@@ -29,7 +23,7 @@ class RandomAnswerManager: NetworkManager {
             do {
                 let decoder = JSONDecoder()
                 let apiResponse = try decoder.decode(ApiResponseData.self, from: data)
-                let answer = apiResponse.magic.answer
+                let answer = apiResponse.toAnswer()
                 completion(answer)
             } catch let error as NSError {
                 print(error.localizedDescription)

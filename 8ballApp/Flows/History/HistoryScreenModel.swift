@@ -10,19 +10,15 @@ import Foundation
 
 class HistoryScreenModel {
     
-    private let answerHistoryManager: AnswerHistoryManager
+    private let dbService: DBService
     
-    init(localManager: AnswerHistoryManager) {
-        self.answerHistoryManager = localManager
+    init(dbService: DBService) {
+        self.dbService = dbService
     }
     
-    func sendAnswers() -> [Answer?] {
-        answerHistoryManager.fetchAnswers().map { (answer) in
+    func sendAnswers() -> [ManagedAnswer] {
+        dbService.fetchAnswers(isLocal: false).map { (answer) in
             return answer
         }
-    }
-    
-    func deleteAnswer(_ selectedAnswer: Answer) {
-        answerHistoryManager.deleteAnswer(selectedAnswer)
     }
 }

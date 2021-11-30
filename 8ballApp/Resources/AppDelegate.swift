@@ -7,31 +7,26 @@
 // swiftlint:disable line_length trailing_whitespace
 
 import UIKit
-import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    var coreDataStack = CoreDataStack()
+    var coreDataStack = DBService()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        
-        let context = coreDataStack.persistentContainer.viewContext
-        
-        let userDefaultsManager = UserDefaultsManager()
-        let customAnswerManager = CustomAnswerManager(context: context, defaultsManager: userDefaultsManager)
-        let answerHistoryManager = AnswerHistoryManager(context: context)
+                
+        let userDefaultsManager = UserDefaultsManager(defaults: UserDefaults.standard)
         let networkManager = RandomAnswerManager()
         
-        let ballModel = BallModel(networkManager: networkManager, localManager: answerHistoryManager)
+        let ballModel = BallModel(networkManager: networkManager, dbService: coreDataStack)
         let ballViewModel = BallViewModel(model: ballModel)
         
-        let settingsScrenModel = SettingsScreenModel(localManager: customAnswerManager)
+        let settingsScrenModel = SettingsScreenModel(dbService: coreDataStack, userDefaults: userDefaultsManager)
         let settingsScreenViewModel = SettingsScreenViewModel(model: settingsScrenModel)
         
-        let historyScreenModel = HistoryScreenModel(localManager: answerHistoryManager)
+        let historyScreenModel = HistoryScreenModel(dbService: coreDataStack)
         let historyScreenViewModel = HistoryScreenViewModel(model: historyScreenModel)
         
         let tabBarViewModel = MainTabBarViewModel(ballViewModel: ballViewModel, settingsScreenViewModel: settingsScreenViewModel, historyScreenViewModel: historyScreenViewModel)

@@ -11,20 +11,23 @@ import Foundation
 class BallModel {
     
     private let randomAnswerManager: NetworkManager
-    private let answerHistoryManager: AnswerHistoryManager
+    private let dbService: DBService
     
-    init(networkManager: RandomAnswerManager, localManager: AnswerHistoryManager) {
+    init(networkManager: RandomAnswerManager, dbService: DBService) {
         self.randomAnswerManager = networkManager
-        self.answerHistoryManager = localManager
+        self.dbService = dbService
     }
-
+    
     func fetchData(completion: @escaping (_ answer: String?) -> Void) {
         randomAnswerManager.fetchData { (answer) in
-            completion(answer)
+            guard let presentableAnswer = answer else { return }
+            self.saveAnswer(presentableAnswer)
+            completion(presentableAnswer.text)
         }
     }
     
-    func saveAnswer(_ answer: String?, _ date: Date?) {
-        answerHistoryManager.saveAnswer(withText: answer, date: date)
+    func saveAnswer(_ answer: Answer) {
+        let managedAnswer = answer.toManaged(isLocal: false)
+        self.dbService.saveAnswers(answers: [managedAnswer])
     }
 }

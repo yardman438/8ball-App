@@ -42,7 +42,7 @@ class SettingsScreenViewController: UIViewController {
         presentCustomAnswerEditAlertController(withTitle: L10n.alertTitle,
                                                message: nil,
                                                style: .alert) { [unowned self] answer in
-            settingsScreenViewModel.addNewAnswer(answer)
+            settingsScreenViewModel.saveAnswer(answer)
             tableView.reloadData()
         }
     }
@@ -126,24 +126,15 @@ extension SettingsScreenViewController {
 
 extension SettingsScreenViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settingsScreenViewModel.updateInterface().count
+        return settingsScreenViewModel.defaultAnswers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: SettingsScreenTableViewCell.identifier,
                 for: indexPath) as? SettingsScreenTableViewCell else { return UITableViewCell() }
-        let customAnswer = settingsScreenViewModel.updateInterface()[indexPath.row]
-        guard let customAnswerText = customAnswer?.text else { return cell }
-        cell.configureLabel(text: customAnswerText)
+        let customAnswer = settingsScreenViewModel.defaultAnswers[indexPath.row]
+        cell.configureLabel(text: customAnswer)
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
-                   forRowAt indexPath: IndexPath) {
-        guard let selectedAnswer = settingsScreenViewModel.updateInterface()[indexPath.row],
-              editingStyle == .delete else { return }
-        settingsScreenViewModel.deleteAnswer(selectedAnswer)
-        self.tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 }

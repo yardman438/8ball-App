@@ -11,26 +11,21 @@ import Foundation
 class SettingsScreenViewModel {
     
     private let settingsScreenModel: SettingsScreenModel
+    var defaultAnswers: [String]
     
     init(model: SettingsScreenModel) {
         self.settingsScreenModel = model
+        self.defaultAnswers = settingsScreenModel.loadDefaultAnswers()
     }
     
-    func loadDefaultAnswers() -> [CustomAnswer?] {
-        let customAnswers = settingsScreenModel.loadDefaultAnswers()
-        return customAnswers
-    }
-
-    func addNewAnswer(_ answer: String) {
-        settingsScreenModel.addNewAnswer(answer)
+    func loadDefaultAnswers() -> [String] {
+        return defaultAnswers
     }
     
-    func deleteAnswer(_ selectedAnswer: CustomAnswer) {
-        settingsScreenModel.deleteAnswer(selectedAnswer)
-    }
-    
-    func updateInterface() -> [CustomAnswer?] {
-        let customAnswers = settingsScreenModel.sendCustomAnswers()
-        return customAnswers
+    func saveAnswer(_ answer: String) {
+        defaultAnswers.append(answer)
+        let presentableAnswer = PresentableAnswer(text: answer, date: Date())
+        let answer = presentableAnswer.toAnswer()
+        settingsScreenModel.saveAnswers(answer)
     }
 }

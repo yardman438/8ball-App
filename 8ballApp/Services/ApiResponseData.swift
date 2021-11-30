@@ -9,6 +9,10 @@ import Foundation
 
 struct ApiResponseData: Codable {
     let magic: Magic
+    
+    func toAnswer() -> Answer {
+        return Answer(text: magic.answer)
+    }
 }
 
 struct Magic: Codable {

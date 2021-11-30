@@ -17,13 +17,9 @@ class BallViewModel {
     }
     
     func updateInterface(completion: @escaping (_ answer: String?) -> Void) {
-        ballModel.fetchData { (answer) in
+        ballModel.fetchData { answer in
             let formattedAnswer = answer?.uppercased()
             completion(formattedAnswer)
         }
-    }
-    
-    func saveAnswer(_ answer: String?, _ date: Date?) {
-        ballModel.saveAnswer(answer, date)
     }
 }

@@ -9,7 +9,11 @@ import Foundation
 
 class UserDefaultsManager {
 
-    private let defaults = UserDefaults.standard
+    private let defaults: UserDefaults
+    
+    init(defaults: UserDefaults) {
+        self.defaults = defaults
+    }
 
     var defaultAnswersArray: [String] {
         get {

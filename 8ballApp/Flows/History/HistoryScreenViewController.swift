@@ -12,7 +12,7 @@ import SnapKit
 class HistoryScreenViewController: UIViewController {
     
     private var historyScreenViewModel: HistoryScreenViewModel
-
+    
     private let tableView = UITableView()
     
     init(viewModel: HistoryScreenViewModel) {
@@ -27,13 +27,16 @@ class HistoryScreenViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         historyScreenViewModel.updateInterface()
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupInterface()
         configureTableView()
+        historyScreenViewModel.updateInterface()
     }
 }
 
@@ -54,7 +57,7 @@ extension HistoryScreenViewController {
         navBar.setBackgroundImage(UIImage(), for: .default)
         navBar.shadowImage = UIImage()
     }
-
+    
     // The function to setup the position of the TableView
     private func setupTableView() {
         view.addSubview(tableView)
@@ -88,19 +91,9 @@ extension HistoryScreenViewController: UITableViewDelegate, UITableViewDataSourc
                 withIdentifier: HistoryScreenTableViewCell.identifier,
                 for: indexPath) as? HistoryScreenTableViewCell else { return UITableViewCell() }
         let answer = historyScreenViewModel.answersHistory[indexPath.row]
-        guard let answerText = answer?.text, let date = answer?.date else { return cell }
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        cell.configureLabel(text: answerText, date: dateFormatter.string(from: date))
+        let answerText = answer.text
+        let date = answer.date
+        cell.configureLabel(text: answerText, date: Formatters.Date.formatter.string(from: date))
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView,
-                   commit editingStyle: UITableViewCell.EditingStyle,
-                   forRowAt indexPath: IndexPath) {
-        guard let selectedAnswer = historyScreenViewModel.answersHistory[indexPath.row],
-              editingStyle == .delete else { return }
-        historyScreenViewModel.deleteAnswer(selectedAnswer)
-        self.tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 }

@@ -11,7 +11,7 @@ import Foundation
 class HistoryScreenViewModel {
     
     private let historyScreenModel: HistoryScreenModel
-    var answersHistory: [Answer?]
+    var answersHistory: [ManagedAnswer]
     
     init(model: HistoryScreenModel) {
         self.historyScreenModel = model
@@ -20,14 +20,5 @@ class HistoryScreenViewModel {
     
     func updateInterface() {
         answersHistory = historyScreenModel.sendAnswers()
-    }
-    
-    func deleteAnswer(_ selectedAnswer: Answer) {
-        historyScreenModel.deleteAnswer(selectedAnswer)
-        while answersHistory.contains(selectedAnswer) {
-            if let answerToRemoveIndex = answersHistory.firstIndex(of: selectedAnswer) {
-                answersHistory.remove(at: answerToRemoveIndex)
-            }
-        }
     }
 }
