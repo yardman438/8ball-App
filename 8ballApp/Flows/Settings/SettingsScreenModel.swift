@@ -9,17 +9,16 @@
 import Foundation
 
 class SettingsScreenModel {
-    private var customAnswers = [L10n.justdoit,
-                                 L10n.ithinkitsyes,
-                                 L10n.no,
-                                 L10n.idontthinkso,
-                                 L10n.shakeitagain]
     
-    func sendCustomAnswers() -> [String] {
-        return customAnswers
+    private let dbService: DBService
+    private let userDefaults: UserDefaultsManager
+    
+    init(dbService: DBService, userDefaults: UserDefaultsManager) {
+        self.dbService = dbService
+        self.userDefaults = userDefaults
     }
     
-    func addNewAnswer(_ answer: String) {
-        return customAnswers.append(answer)
+    func loadDefaultAnswers() -> [String] {
+        return userDefaults.defaultAnswersArray
     }
 }

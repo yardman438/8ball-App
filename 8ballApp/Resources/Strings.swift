@@ -20,8 +20,14 @@ internal enum L10n {
   internal static let alertTitle = L10n.tr("Localizable", "alert-title")
   /// Have a question?
   internal static let bootQuestion = L10n.tr("Localizable", "boot-question")
+  /// defaultAnswersArray
+  internal static let defaultsKey = L10n.tr("Localizable", "defaults-key")
   /// from API
   internal static let fromAPI = L10n.tr("Localizable", "fromAPI")
+  /// historyCell
+  internal static let historyIdentifier = L10n.tr("Localizable", "history-identifier")
+  /// History
+  internal static let historyTitle = L10n.tr("Localizable", "history-title")
   /// cell
   internal static let identifier = L10n.tr("Localizable", "identifier")
   /// I don't think so...
@@ -38,6 +44,8 @@ internal enum L10n {
   internal static let no = L10n.tr("Localizable", "no")
   /// Custom answers
   internal static let screenTitle = L10n.tr("Localizable", "screen-title")
+  /// Settings
+  internal static let settingsTitle = L10n.tr("Localizable", "settings-title")
   /// Shake it again.
   internal static let shakeitagain = L10n.tr("Localizable", "shakeitagain")
   /// This is gonna happen

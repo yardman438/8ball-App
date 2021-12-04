@@ -25,6 +25,8 @@ internal enum Asset {
   internal static let backgroundColor = ColorAsset(name: "backgroundColor")
   internal static let buttonColor = ColorAsset(name: "buttonColor")
   internal static let textColor = ColorAsset(name: "textColor")
+  internal static let ball = ImageAsset(name: "ball")
+  internal static let history = ImageAsset(name: "history")
   internal static let settings = ImageAsset(name: "settings")
   internal static let _8Ball = ImageAsset(name: "8-ball")
   internal static let predictBall = ImageAsset(name: "predictBall")

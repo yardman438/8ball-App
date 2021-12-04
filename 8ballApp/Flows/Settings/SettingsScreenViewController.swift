@@ -7,6 +7,7 @@
 // swiftlint:disable trailing_whitespace
 
 import UIKit
+import SnapKit
 
 class SettingsScreenViewController: UIViewController {
     
@@ -14,7 +15,22 @@ class SettingsScreenViewController: UIViewController {
     private let addAnswerButton = UIButton(type: .system)
     private let tableView = UITableView()
     
-    var settingsScreenViewModel: SettingsScreenViewModel!
+    var settingsScreenViewModel: SettingsScreenViewModel
+    
+    init(viewModel: SettingsScreenViewModel) {
+        self.settingsScreenViewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        settingsScreenViewModel.loadDefaultAnswers()
+        tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +42,7 @@ class SettingsScreenViewController: UIViewController {
         presentCustomAnswerEditAlertController(withTitle: L10n.alertTitle,
                                                message: nil,
                                                style: .alert) { [unowned self] answer in
-            settingsScreenViewModel.addNewAnswer(answer)
+            settingsScreenViewModel.saveAnswer(answer)
             tableView.reloadData()
         }
     }
@@ -39,11 +55,18 @@ extension SettingsScreenViewController {
     // The main function to setup interface
     private func setupInterface() {
         view.backgroundColor = UIColor(asset: Asset.backgroundColor)
-        navigationController?.navigationBar.tintColor = UIColor(asset: Asset.buttonColor)
         
+        setupNavigationBar()
         setupCustomAnswerLabel()
         setupAddAnswerButton()
         setupTableView()
+    }
+    
+    private func setupNavigationBar() {
+        self.title = L10n.settingsTitle
+        guard let navBar = navigationController?.navigationBar else { return }
+        navBar.setBackgroundImage(UIImage(), for: .default)
+        navBar.shadowImage = UIImage()
     }
     
     // The function to setup the title on the screen
@@ -69,7 +92,7 @@ extension SettingsScreenViewController {
         view.addSubview(addAnswerButton)
         addAnswerButton.snp.makeConstraints { (make) in
             make.centerX.equalTo(self.view.safeAreaLayoutGuide.snp.centerX)
-            make.top.equalTo(customAnswerLabel.snp.bottom).inset(-15)
+            make.top.equalTo(customAnswerLabel.snp.bottom).offset(15)
             make.height.equalTo(34)
             make.width.equalTo(159)
         }
@@ -80,7 +103,7 @@ extension SettingsScreenViewController {
     private func setupTableView() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(addAnswerButton.snp.bottom).inset(-15)
+            make.top.equalTo(addAnswerButton.snp.bottom).offset(15)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
             make.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing).inset(32)
             make.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading).inset(16)
@@ -97,19 +120,20 @@ extension SettingsScreenViewController {
         tableView.allowsSelection = false
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = 50
     }
 }
 
 extension SettingsScreenViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settingsScreenViewModel.updateInterface().count
+        return settingsScreenViewModel.defaultAnswers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: SettingsScreenTableViewCell.identifier,
                 for: indexPath) as? SettingsScreenTableViewCell else { return UITableViewCell() }
-        let customAnswer = settingsScreenViewModel.updateInterface()[indexPath.row]
+        let customAnswer = settingsScreenViewModel.defaultAnswers[indexPath.row]
         cell.configureLabel(text: customAnswer)
         return cell
     }

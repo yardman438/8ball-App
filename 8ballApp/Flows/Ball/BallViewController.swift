@@ -47,11 +47,6 @@ class BallViewController: UIViewController {
             }
         }
     }
-    
-    @objc private func settingsButtonPressed() {
-        let settingsScreenViewController = injectToSettingsScreenViewController()
-        navigationController?.pushViewController(settingsScreenViewController, animated: true)
-    }
 }
 
 // MARK: Extensions
@@ -74,11 +69,6 @@ extension BallViewController {
         guard let navBar = navigationController?.navigationBar else { return }
         navBar.setBackgroundImage(UIImage(), for: .default)
         navBar.shadowImage = UIImage()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(asset: Asset.settings),
-                                                            style: .done,
-                                                            target: self,
-                                                            action: #selector(settingsButtonPressed))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor(asset: Asset.buttonColor)
     }
     
     // The function to setup the main label on the screen

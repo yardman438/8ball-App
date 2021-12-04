@@ -9,18 +9,20 @@
 import Foundation
 
 class SettingsScreenViewModel {
+    
     private let settingsScreenModel: SettingsScreenModel
+    var defaultAnswers: [String]
     
     init(model: SettingsScreenModel) {
         self.settingsScreenModel = model
-    }
-
-    func addNewAnswer(_ answer: String) {
-        settingsScreenModel.addNewAnswer(answer)
+        self.defaultAnswers = settingsScreenModel.loadDefaultAnswers()
     }
     
-    func updateInterface() -> [String] {
-        let customAnswers = settingsScreenModel.sendCustomAnswers()
-        return customAnswers
+    func loadDefaultAnswers() -> [String] {
+        return defaultAnswers
+    }
+    
+    func saveAnswer(_ answer: String) {
+        defaultAnswers.append(answer)
     }
 }

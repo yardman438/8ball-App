@@ -9,15 +9,24 @@
 import Foundation
 
 class BallModel {
-    private let randomAnswerManager: NetworkManager
     
-    init(randomAnswerManager: RandomAnswerManager) {
-        self.randomAnswerManager = randomAnswerManager
+    private let randomAnswerManager: NetworkManager
+    private let dbService: DBService
+    
+    init(networkManager: RandomAnswerManager, dbService: DBService) {
+        self.randomAnswerManager = networkManager
+        self.dbService = dbService
     }
-
+    
     func fetchData(completion: @escaping (_ answer: String?) -> Void) {
         randomAnswerManager.fetchData { (answer) in
-            completion(answer)
+            guard let presentableAnswer = answer else { return }
+            self.saveAnswer(presentableAnswer)
+            completion(presentableAnswer.text)
         }
+    }
+    
+    func saveAnswer(_ answer: Answer) {
+        self.dbService.saveAnswers(answers: [answer])
     }
 }
