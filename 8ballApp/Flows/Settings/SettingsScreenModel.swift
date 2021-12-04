@@ -21,9 +21,4 @@ class SettingsScreenModel {
     func loadDefaultAnswers() -> [String] {
         return userDefaults.defaultAnswersArray
     }
-    
-    func saveAnswers(_ answer: Answer) {
-        let managedAnswer = answer.toManaged(isLocal: true)
-        dbService.saveAnswers(answers: [managedAnswer])
-    }
 }

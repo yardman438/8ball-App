@@ -7,24 +7,20 @@
 
 import Foundation
 
-struct Answer: Codable {
+struct Answer: Codable, Equatable {
     let text: String
     let date: Date
+    let isLocal: Bool
 
-    init(text: String, date: Date = Date()) {
+    init(text: String, date: Date = Date(), isLocal: Bool = false) {
         self.text = text
         self.date = date
-    }
-}
-
-extension Answer {
-    func toManaged(isLocal: Bool) -> ManagedAnswer {
-        return ManagedAnswer(text: self.text, date: Date(), isLocal: isLocal)
+        self.isLocal = isLocal
     }
 }
 
 extension Answer {
     func toPresentable() -> PresentableAnswer {
-        return PresentableAnswer(text: self.text, date: self.date)
+        return PresentableAnswer(text: self.text, date: self.date, isLocal: self.isLocal)
     }
 }

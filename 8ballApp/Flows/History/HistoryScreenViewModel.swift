@@ -11,7 +11,7 @@ import Foundation
 class HistoryScreenViewModel {
     
     private let historyScreenModel: HistoryScreenModel
-    var answersHistory: [ManagedAnswer]
+    var answersHistory: [Answer]
     
     init(model: HistoryScreenModel) {
         self.historyScreenModel = model

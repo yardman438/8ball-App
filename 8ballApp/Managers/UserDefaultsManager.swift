@@ -17,7 +17,7 @@ class UserDefaultsManager {
 
     var defaultAnswersArray: [String] {
         get {
-            let answers = [L10n.justdoit]
+            let answers = [L10n.justdoit, L10n.idontthinkso, L10n.ithinkitsyes, L10n.no]
             return defaults.object(forKey: L10n.defaultsKey) as? [String] ?? answers
         }
         set {

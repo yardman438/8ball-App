@@ -27,7 +27,6 @@ class BallModel {
     }
     
     func saveAnswer(_ answer: Answer) {
-        let managedAnswer = answer.toManaged(isLocal: false)
-        self.dbService.saveAnswers(answers: [managedAnswer])
+        self.dbService.saveAnswers(answers: [answer])
     }
 }

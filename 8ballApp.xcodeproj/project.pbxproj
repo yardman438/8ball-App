@@ -29,8 +29,7 @@
 		5E6E49FC274F5F6F00E34743 /* AnswersDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E6E49FA274F5F6F00E34743 /* AnswersDataModel.xcdatamodeld */; };
 		5E9B5F302739B09D0099502E /* SettingsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9B5F2F2739B09D0099502E /* SettingsScreenViewController.swift */; };
 		5E9C8E00274FDD1E00BA40BF /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C8DFF274FDD1E00BA40BF /* UserDefaultsManager.swift */; };
-		5E9C8E2D2755031000BA40BF /* DBAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C8E2B2755031000BA40BF /* DBAnswer.swift */; };
-		5E9C8E302755045600BA40BF /* ManagedAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C8E2F2755045600BA40BF /* ManagedAnswer.swift */; };
+		5E9C8E2D2755031000BA40BF /* ManagedAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C8E2B2755031000BA40BF /* ManagedAnswer.swift */; };
 		5E9C8E32275504C200BA40BF /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C8E31275504C200BA40BF /* Answer.swift */; };
 		5E9C8E3727555FBC00BA40BF /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C8E3627555FBC00BA40BF /* Formatters.swift */; };
 		5E9C8E3927567CB100BA40BF /* PresentableAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C8E3827567CB100BA40BF /* PresentableAnswer.swift */; };
@@ -66,8 +65,7 @@
 		5E6E49FB274F5F6F00E34743 /* AnswersDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnswersDataModel.xcdatamodel; sourceTree = "<group>"; };
 		5E9B5F2F2739B09D0099502E /* SettingsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenViewController.swift; sourceTree = "<group>"; };
 		5E9C8DFF274FDD1E00BA40BF /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
-		5E9C8E2B2755031000BA40BF /* DBAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBAnswer.swift; sourceTree = "<group>"; };
-		5E9C8E2F2755045600BA40BF /* ManagedAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAnswer.swift; sourceTree = "<group>"; };
+		5E9C8E2B2755031000BA40BF /* ManagedAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedAnswer.swift; sourceTree = "<group>"; };
 		5E9C8E31275504C200BA40BF /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		5E9C8E3627555FBC00BA40BF /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		5E9C8E3827567CB100BA40BF /* PresentableAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableAnswer.swift; sourceTree = "<group>"; };
@@ -183,8 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				5E6E49FA274F5F6F00E34743 /* AnswersDataModel.xcdatamodeld */,
-				5E9C8E2B2755031000BA40BF /* DBAnswer.swift */,
-				5E9C8E2F2755045600BA40BF /* ManagedAnswer.swift */,
+				5E9C8E2B2755031000BA40BF /* ManagedAnswer.swift */,
 				5E9C8E31275504C200BA40BF /* Answer.swift */,
 				5E9C8E3827567CB100BA40BF /* PresentableAnswer.swift */,
 			);
@@ -443,12 +440,11 @@
 				5ED7B81A27412C7700E0A6FF /* SettingsScreenViewModel.swift in Sources */,
 				5E6E49CF274E6E0D00E34743 /* HistoryScreenModel.swift in Sources */,
 				5E9C8E32275504C200BA40BF /* Answer.swift in Sources */,
-				5E9C8E302755045600BA40BF /* ManagedAnswer.swift in Sources */,
 				5E5CCD24271F5F61001F7212 /* CustomAnswerAlertController.swift in Sources */,
 				5E9C8E3727555FBC00BA40BF /* Formatters.swift in Sources */,
 				5E5CCD19271F2E4C001F7212 /* ApiResponseData.swift in Sources */,
 				5E6E49C7274E386500E34743 /* HistoryScreenViewController.swift in Sources */,
-				5E9C8E2D2755031000BA40BF /* DBAnswer.swift in Sources */,
+				5E9C8E2D2755031000BA40BF /* ManagedAnswer.swift in Sources */,
 				5E6E49D2274E7BDB00E34743 /* MainTabBarViewModel.swift in Sources */,
 				5E9B5F302739B09D0099502E /* SettingsScreenViewController.swift in Sources */,
 				5ED7B80C273FF6CE00E0A6FF /* BallViewModel.swift in Sources */,

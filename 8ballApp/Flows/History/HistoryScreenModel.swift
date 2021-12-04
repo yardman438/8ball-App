@@ -16,7 +16,7 @@ class HistoryScreenModel {
         self.dbService = dbService
     }
     
-    func sendAnswers() -> [ManagedAnswer] {
+    func sendAnswers() -> [Answer] {
         dbService.fetchAnswers(isLocal: false).map { (answer) in
             return answer
         }

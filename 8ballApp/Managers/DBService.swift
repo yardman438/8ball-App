@@ -25,17 +25,17 @@ class DBService {
         return container
     }()
     
-    private var entityName = "DBAnswer"
-    private var answers: [DBAnswer] = []
+    private var entityName = "ManagedAnswer"
+    private var answers: [ManagedAnswer] = []
     
     // MARK: CoreData Saving support
     
     private func getObjects<T: NSManagedObject>(_ request: NSFetchRequest<T>,
                                                 completion: @escaping (Result<[T], Error>) -> Void) {
-        let context = backgroundContext
+        let context = context
         context.perform {
             do {
-                let result = try self.backgroundContext.fetch(request)
+                let result = try context.fetch(request)
                 completion(.success(result))
             } catch let error {
                 completion(.failure(error))
@@ -43,7 +43,7 @@ class DBService {
         }
     }
     
-    private func saveContext () {
+    private func saveBackgroundContext (_ backgroundContext: NSManagedObjectContext) {
         if backgroundContext.hasChanges {
             do {
                 try backgroundContext.save()
@@ -56,8 +56,8 @@ class DBService {
     
     // MARK: Public functions
     
-    public func fetchAnswers(isLocal: Bool) -> [ManagedAnswer] {
-        let fetchRequest: NSFetchRequest<DBAnswer> = DBAnswer.fetchRequest()
+    public func fetchAnswers(isLocal: Bool) -> [Answer] {
+        let fetchRequest: NSFetchRequest<ManagedAnswer> = ManagedAnswer.fetchRequest()
         getObjects(fetchRequest) { result in
             switch result {
             case .success(let answers):
@@ -66,19 +66,19 @@ class DBService {
                 print(error.localizedDescription)
             }
         }
-        return answers.self.map { $0.toManagedAnswer() }
+        return answers.self.map { $0.toAnswer() }
     }
-    
-    public func saveAnswers(answers: [ManagedAnswer]) {
+
+    public func saveAnswers(answers: [Answer]) {
         backgroundContext.perform {
             for answer in answers {
-                let dbAnswer = DBAnswer(context: self.backgroundContext)
+                let dbAnswer = ManagedAnswer(context: self.backgroundContext)
                 dbAnswer.text = answer.text
                 dbAnswer.isLocal = answer.isLocal
                 dbAnswer.date = answer.date
                 self.answers.append(dbAnswer)
             }
-            self.saveContext()
+            self.saveBackgroundContext(self.backgroundContext)
         }
     }
 }

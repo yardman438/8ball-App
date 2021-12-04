@@ -24,8 +24,5 @@ class SettingsScreenViewModel {
     
     func saveAnswer(_ answer: String) {
         defaultAnswers.append(answer)
-        let presentableAnswer = PresentableAnswer(text: answer, date: Date())
-        let answer = presentableAnswer.toAnswer()
-        settingsScreenModel.saveAnswers(answer)
     }
 }
