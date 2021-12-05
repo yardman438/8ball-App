@@ -16,9 +16,9 @@ class HistoryScreenModel {
         self.dbService = dbService
     }
     
-    func sendAnswers() -> [Answer] {
-        dbService.fetchAnswers(isLocal: false).map { (answer) in
-            return answer
+    func sendAnswers(completion: @escaping (_ answers: [Answer]) -> Void) {
+        dbService.fetchAnswers(isLocal: false) { (answers) in
+            completion(answers)
         }
     }
 }
