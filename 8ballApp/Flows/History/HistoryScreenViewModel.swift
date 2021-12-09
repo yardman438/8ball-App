@@ -18,7 +18,8 @@ class HistoryScreenViewModel {
     }
     
     func updateInterface(completion: @escaping (_ isDone: Bool) -> Void) {
-        historyScreenModel.sendAnswers(completion: { (answers) in
+        historyScreenModel.sendAnswers(completion: { [weak self] (answers) in
+            guard let self = self else { return }
             self.answersHistory = answers
             completion(true)
         })

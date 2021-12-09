@@ -14,6 +14,11 @@ class SettingsScreenViewController: UIViewController {
     private let customAnswerLabel = UILabel()
     private let addAnswerButton = UIButton(type: .system)
     private let tableView = UITableView()
+    private let visualEffectView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .light)
+        let view = UIVisualEffectView(effect: blurEffect)
+        return view
+    }()
     
     var settingsScreenViewModel: SettingsScreenViewModel
     
@@ -39,10 +44,12 @@ class SettingsScreenViewController: UIViewController {
     }
     
     @objc private func addAnswerButtonPressed() {
+        alertAnimateIn()
         presentCustomAnswerEditAlertController(withTitle: L10n.alertTitle,
                                                message: nil,
                                                style: .alert) { [unowned self] answer in
             settingsScreenViewModel.saveAnswer(answer)
+            alertAnimateOut()
             tableView.reloadData()
         }
     }
@@ -60,6 +67,7 @@ extension SettingsScreenViewController {
         setupCustomAnswerLabel()
         setupAddAnswerButton()
         setupTableView()
+        setupVisualEffectView()
     }
     
     private func setupNavigationBar() {
@@ -108,6 +116,14 @@ extension SettingsScreenViewController {
             make.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading).inset(16)
         }
     }
+    
+    private func setupVisualEffectView() {
+        view.addSubview(visualEffectView)
+        visualEffectView.snp.makeConstraints { (make) in
+            make.top.bottom.leading.trailing.equalTo(view)
+        }
+        visualEffectView.alpha = 0
+    }
 }
 
 extension SettingsScreenViewController {
@@ -135,5 +151,20 @@ extension SettingsScreenViewController: UITableViewDelegate, UITableViewDataSour
         let customAnswer = settingsScreenViewModel.defaultAnswers[indexPath.row]
         cell.configureLabel(text: customAnswer)
         return cell
+    }
+}
+
+extension SettingsScreenViewController {
+    
+    private func alertAnimateIn() {
+        UIView.animate(withDuration: 0.4) {
+            self.visualEffectView.alpha = 1
+        }
+    }
+    
+    func alertAnimateOut() {
+        UIView.animate(withDuration: 0.2) {
+            self.visualEffectView.alpha = 0
+        }
     }
 }

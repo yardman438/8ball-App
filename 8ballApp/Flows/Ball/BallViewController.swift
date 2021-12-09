@@ -46,9 +46,10 @@ class BallViewController: UIViewController {
     
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         guard motion == .motionShake else { return }
-        ballViewModel.updateInterface { (answer) in
+        ballViewModel.updateInterface { [weak self] (answer) in
+            guard let self = self else { return }
             DispatchQueue.main.async {
-                if answer == answer {
+                if answer != nil {
                     self.isAnswerReady = true
                 }
                 self.getAnswerAnimation()
@@ -58,9 +59,10 @@ class BallViewController: UIViewController {
     }
     
     @objc private func shakeButtonPressed() {
-        ballViewModel.updateInterface { (answer) in
+        ballViewModel.updateInterface { [weak self] (answer) in
+            guard let self = self else { return }
             DispatchQueue.main.async {
-                if answer == answer {
+                if answer != nil {
                     self.isAnswerReady = true
                 }
                 self.getAnswerAnimation()
@@ -176,18 +178,23 @@ extension BallViewController {
     
     private func getAnswerAnimation() {
         
+        let options: UIView.AnimationOptions = [.curveEaseInOut]
+        
         self.answerLabel.isHidden = true
         self.arcView.isHidden = false
-             
-        UIView.animateKeyframes(withDuration: 1.5, delay: 0, options: [.repeat, .autoreverse]) {
+        
+        UIView.animateKeyframes(withDuration: 1.5, delay: 0, options: [.repeat, .autoreverse]) { [weak self] in
+            guard let self = self else { return }
             self.arcView.transform = CGAffineTransform.init(scaleX: 10, y: 10)
         }
-
-        UIView.animate(withDuration: 1.5, delay: 0, options: .curveEaseIn) {
+        
+        UIView.animate(withDuration: 1.5, delay: 0, options: options) { [weak self] in
+            guard let self = self else { return }
             self.triangleView.transform = CGAffineTransform.init(translationX: self.view.bounds.width, y: 0)
-        } completion: { _ in
+        } completion: { [weak self] _ in
+            guard let self = self else { return }
             self.triangleView.transform = CGAffineTransform.init(translationX: -self.view.bounds.width, y: 0)
-            UIView.animate(withDuration: 1.5, delay: 0, options: .curveEaseOut) {
+            UIView.animate(withDuration: 1.5, delay: 0, options: options) {
                 self.triangleView.transform = CGAffineTransform.identity
             } completion: { _ in
                 if self.isAnswerReady {

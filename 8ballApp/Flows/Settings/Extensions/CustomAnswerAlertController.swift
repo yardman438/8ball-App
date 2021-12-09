@@ -29,7 +29,9 @@ extension SettingsScreenViewController {
                 completionHandler(answer)
             }
         }
-        let cancelAction = UIAlertAction(title: L10n.alertCancel, style: .cancel)
+        let cancelAction = UIAlertAction(title: L10n.alertCancel, style: .cancel) { _ in
+            self.alertAnimateOut()
+        }
         
         alertController.addAction(saveAction)
         alertController.addAction(cancelAction)
