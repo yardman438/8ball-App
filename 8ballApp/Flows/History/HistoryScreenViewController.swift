@@ -26,8 +26,12 @@ class HistoryScreenViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        historyScreenViewModel.updateInterface()
-        self.tableView.reloadData()
+        historyScreenViewModel.updateInterface { (isDone) in
+            guard isDone else { return }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     override func viewDidLoad() {

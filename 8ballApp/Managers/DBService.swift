@@ -26,7 +26,6 @@ class DBService {
     }()
     
     private var entityName = "ManagedAnswer"
-    private var answers: [ManagedAnswer] = []
     
     // MARK: CoreData Saving support
     
@@ -56,17 +55,17 @@ class DBService {
     
     // MARK: Public functions
     
-    public func fetchAnswers(isLocal: Bool) -> [Answer] {
+    public func fetchAnswers(isLocal: Bool, completion: @escaping (_ answers: [Answer]) -> Void) {
         let fetchRequest: NSFetchRequest<ManagedAnswer> = ManagedAnswer.fetchRequest()
         getObjects(fetchRequest) { result in
             switch result {
-            case .success(let answers):
-                self.answers = answers
+            case .success(let answersFromBD):
+                let answers = answersFromBD.map { $0.toAnswer() }
+                completion(answers)
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
-        return answers.self.map { $0.toAnswer() }
     }
 
     public func saveAnswers(answers: [Answer]) {
@@ -76,7 +75,6 @@ class DBService {
                 dbAnswer.text = answer.text
                 dbAnswer.isLocal = answer.isLocal
                 dbAnswer.date = answer.date
-                self.answers.append(dbAnswer)
             }
             self.saveBackgroundContext(self.backgroundContext)
         }

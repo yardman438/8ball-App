@@ -41,6 +41,7 @@ class MainTabBarController: UITabBarController {
         
         self.viewControllers = [firstVC, secondVC, thirdVC]
         tabBar.barTintColor = UIColor(asset: Asset.backgroundColor)
+        tabBar.tintColor = UIColor(asset: Asset.secondaryColor)
         tabBar.backgroundImage = UIImage()
         tabBar.shadowImage = UIImage()
 

@@ -11,14 +11,17 @@ import Foundation
 class HistoryScreenViewModel {
     
     private let historyScreenModel: HistoryScreenModel
-    var answersHistory: [Answer]
+    var answersHistory: [Answer] = []
     
     init(model: HistoryScreenModel) {
         self.historyScreenModel = model
-        self.answersHistory = model.sendAnswers()
     }
     
-    func updateInterface() {
-        answersHistory = historyScreenModel.sendAnswers()
+    func updateInterface(completion: @escaping (_ isDone: Bool) -> Void) {
+        historyScreenModel.sendAnswers(completion: { [weak self] (answers) in
+            guard let self = self else { return }
+            self.answersHistory = answers
+            completion(true)
+        })
     }
 }
