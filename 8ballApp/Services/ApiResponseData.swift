@@ -4,6 +4,7 @@
 //
 //  Created by Sergey Dvornik on 19.10.2021.
 //
+// swiftlint:disable trailing_whitespace
 
 import Foundation
 
