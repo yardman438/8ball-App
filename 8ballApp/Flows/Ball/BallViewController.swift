@@ -46,8 +46,7 @@ class BallViewController: UIViewController {
     
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         guard motion == .motionShake else { return }
-        ballViewModel.updateInterface { [weak self] (answer) in
-            guard let self = self else { return }
+        ballViewModel.updateInterface { (answer) in
             DispatchQueue.main.async {
                 if answer != nil {
                     self.isAnswerReady = true
@@ -59,8 +58,7 @@ class BallViewController: UIViewController {
     }
     
     @objc private func shakeButtonPressed() {
-        ballViewModel.updateInterface { [weak self] (answer) in
-            guard let self = self else { return }
+        ballViewModel.updateInterface { (answer) in
             DispatchQueue.main.async {
                 if answer != nil {
                     self.isAnswerReady = true
