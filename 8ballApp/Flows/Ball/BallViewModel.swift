@@ -7,19 +7,34 @@
 // swiftlint:disable trailing_whitespace
 
 import Foundation
+import RxSwift
 
 class BallViewModel {
     
     private let ballModel: BallModel
     
+    private let disposeBag = DisposeBag()
+    
     init(model: BallModel) {
         self.ballModel = model
     }
     
-    func updateInterface(completion: @escaping (_ answer: String?) -> Void) {
-        ballModel.fetchData { answer in
-            let formattedAnswer = answer?.uppercased()
-            completion(formattedAnswer)
+    func updateInterface() -> Observable<String?> {
+        return Observable.create { [weak self] observer in
+            guard let self = self else { return Disposables.create() }
+            self.ballModel.fetchData()
+                .subscribe { answer in
+                    let formattedAnswer = answer?.uppercased()
+                    observer.on(.next(formattedAnswer))
+                } onError: { error in
+                    print(error)
+                } .disposed(by: self.disposeBag)
+            return Disposables.create()
         }
+    }
+    
+    func saveAnswer(_ answer: String) {
+        let newAnswer = Answer(text: answer, date: Date(), isLocal: false)
+        ballModel.saveAnswer(newAnswer)
     }
 }

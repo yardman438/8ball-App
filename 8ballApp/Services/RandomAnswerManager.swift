@@ -7,27 +7,47 @@
 // swiftlint:disable trailing_whitespace
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 protocol NetworkManager {
-    func fetchData(completion: @escaping (_ answer: Answer?) -> Void)
+    func fetchData() -> Observable<String?>
 }
 
 class RandomAnswerManager: NetworkManager {
+    
+    func fetchData() -> Observable<String?> {
 
-    func fetchData(completion: @escaping (_ answer: Answer?) -> Void) {
+        guard let url = URL(string: "https://8ball.delegator.com/magic/JSON/question") else {
+            return Observable.just(nil)
+        }
+        
+        let request = URLRequest(url: url)
+                return URLSession.shared.rx.response(request: request)
+                    .map { result -> Data in
+                        guard result.response.statusCode == 200 else {
+                            throw FetchError.invalidResponse(result.response)
+                        }
+                        return result.data
+                    }.map { data in
+                        do {
+                            let apiResponse = try JSONDecoder().decode(
+                                ApiResponseData.self, from: data
+                            )
+                            let answer = apiResponse.magic.answer
+                            return answer
+                        } catch let error {
+                            throw FetchError.invalidJSON(error)
+                        }
+                    }
+                    .observe(on: MainScheduler.instance)
+                    .asObservable()
+    }
+}
 
-        guard let url = URL(string: "https://8ball.delegator.com/magic/JSON/question") else { return }
-        URLSession.shared.dataTask(with: url) { (data, _, _) in
-            guard let data = data else { return }
-            
-            do {
-                let decoder = JSONDecoder()
-                let apiResponse = try decoder.decode(ApiResponseData.self, from: data)
-                let answer = apiResponse.toAnswer()
-                completion(answer)
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
-        }.resume()
+extension RandomAnswerManager {
+    private enum FetchError: Error {
+        case invalidResponse(URLResponse?)
+        case invalidJSON(Error)
     }
 }
