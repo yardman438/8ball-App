@@ -50,35 +50,27 @@ class BallViewController: UIViewController {
     
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         guard motion == .motionShake else { return }
-        ballViewModel.updateInterface()
-                    .observe(on: MainScheduler.asyncInstance)
-                    .subscribe { (answer) in
-                        DispatchQueue.main.async {
-                            if answer != nil {
-                                self.isAnswerReady = true
-                            }
-                            self.getAnswerAnimation()
-                            self.answerLabel.text = answer
-                        }
-                    } onError: { (error) in
-                        print(error)
-                    } .disposed(by: self.disposeBag)
+        updateInterface()
     }
     
     @objc private func shakeButtonPressed() {
+        updateInterface()
+    }
+    
+    private func updateInterface() {
         ballViewModel.updateInterface()
-                    .observe(on: MainScheduler.asyncInstance)
-                    .subscribe { (answer) in
-                        DispatchQueue.main.async {
-                            if answer != nil {
-                                self.isAnswerReady = true
-                            }
-                            self.getAnswerAnimation()
-                            self.answerLabel.text = answer
-                        }
-                    } onError: { (error) in
-                        print(error)
-                    } .disposed(by: self.disposeBag)
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe { [weak self] (answer) in
+                guard let self = self else { return }
+                if answer != nil {
+                    self.isAnswerReady = true
+                }
+                self.getAnswerAnimation()
+                self.answerLabel.text = answer
+                self.ballViewModel.saveAnswer(answer!)
+            } onError: { (error) in
+                print(error)
+            } .disposed(by: self.disposeBag)
     }
 }
 

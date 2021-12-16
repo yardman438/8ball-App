@@ -19,10 +19,7 @@ class RandomAnswerManager: NetworkManager {
     func fetchData() -> Observable<String?> {
 
         guard let url = URL(string: "https://8ball.delegator.com/magic/JSON/question") else {
-            return Observable.create { (observer) in
-                observer.on(.next(nil))
-                return Disposables.create()
-            }
+            return Observable.just(nil)
         }
         
         let request = URLRequest(url: url)

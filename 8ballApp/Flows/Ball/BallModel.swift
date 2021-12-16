@@ -24,7 +24,6 @@ final class BallModel {
     func fetchData() -> Observable<String?> {
         return Observable.create { observer in
             self.randomAnswerManager.fetchData()
-                .observe(on: MainScheduler.asyncInstance)
                 .subscribe { answer in
                     if let answer = answer {
                         observer.on(.next(answer))
@@ -36,7 +35,7 @@ final class BallModel {
         }
     }
     
-//    func saveAnswer(_ answer: Answer) {
-//        self.dbService.saveAnswers(answers: [answer])
-//    }
+    func saveAnswer(_ answer: Answer) {
+        self.dbService.saveAnswers(answers: [answer])
+    }
 }

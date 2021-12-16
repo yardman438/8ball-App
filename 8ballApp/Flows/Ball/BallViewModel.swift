@@ -20,9 +20,9 @@ class BallViewModel {
     }
     
     func updateInterface() -> Observable<String?> {
-        return Observable.create { observer in
+        return Observable.create { [weak self] observer in
+            guard let self = self else { return Disposables.create() }
             self.ballModel.fetchData()
-                .observe(on: MainScheduler.asyncInstance)
                 .subscribe { answer in
                     let formattedAnswer = answer?.uppercased()
                     observer.on(.next(formattedAnswer))
@@ -31,5 +31,10 @@ class BallViewModel {
                 } .disposed(by: self.disposeBag)
             return Disposables.create()
         }
+    }
+    
+    func saveAnswer(_ answer: String) {
+        let newAnswer = Answer(text: answer, date: Date(), isLocal: false)
+        ballModel.saveAnswer(newAnswer)
     }
 }
