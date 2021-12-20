@@ -32,7 +32,7 @@ class BallViewController: UIViewController {
         return view
     }()
     
-    private var ballViewModel: BallViewModel
+    var ballViewModel: BallViewModel
     
     init(viewModel: BallViewModel) {
         self.ballViewModel = viewModel
@@ -77,18 +77,18 @@ class BallViewController: UIViewController {
 // MARK: Interface setup
 
 extension BallViewController {
-    
+
     // The main function to setup interface
     private func setupInterface() {
         view.backgroundColor = UIColor(asset: Asset.backgroundColor)
-        
+
         setupNavigationBar()
         setupTriangleImage()
         setupArc()
         setupAnswerLabel()
         setupShakeButton()
     }
-    
+
     // The function to setup the navigation bar
     private func setupNavigationBar() {
         let logo = UIImage(asset: Asset._8Ball)
@@ -99,7 +99,7 @@ extension BallViewController {
         navBar.setBackgroundImage(UIImage(), for: .default)
         navBar.shadowImage = UIImage()
     }
-    
+
     // The function to setup the main label on the screen
     private func setupAnswerLabel() {
         answerLabel.text = L10n.bootQuestion
@@ -115,7 +115,7 @@ extension BallViewController {
             make.width.lessThanOrEqualTo(140)
         }
     }
-    
+
     // The function to setup the CTA-button on the screen
     private func setupShakeButton() {
         shakeButton.setTitle(L10n.mainButtonCTA, for: .normal)
@@ -131,7 +131,7 @@ extension BallViewController {
         }
         shakeButton.addTarget(self, action: #selector(shakeButtonPressed), for: .touchUpInside)
     }
-    
+
     // The function to setup the image on the background of the answerLabel
     private func setupTriangleImage() {
         view.addSubview(triangleView)
@@ -140,7 +140,7 @@ extension BallViewController {
             make.height.width.equalTo(240)
         }
     }
-    
+
     // The function to setup the shape on the top of the screen
     private func setupArc() {
         view.addSubview(arcView)

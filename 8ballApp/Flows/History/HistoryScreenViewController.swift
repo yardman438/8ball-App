@@ -11,7 +11,7 @@ import SnapKit
 
 class HistoryScreenViewController: UIViewController {
     
-    private var historyScreenViewModel: HistoryScreenViewModel
+    var historyScreenViewModel: HistoryScreenViewModel
     
     private let tableView = UITableView()
     

@@ -19,20 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
         let userDefaultsManager = UserDefaultsManager(defaults: UserDefaults.standard)
         let networkManager = RandomAnswerManager()
-        
-        let ballModel = BallModel(networkManager: networkManager, dbService: coreDataStack)
-        let ballViewModel = BallViewModel(model: ballModel)
-        
-        let settingsScrenModel = SettingsScreenModel(dbService: coreDataStack, userDefaults: userDefaultsManager)
-        let settingsScreenViewModel = SettingsScreenViewModel(model: settingsScrenModel)
-        
-        let historyScreenModel = HistoryScreenModel(dbService: coreDataStack)
-        let historyScreenViewModel = HistoryScreenViewModel(model: historyScreenModel)
-        
-        let tabBarViewModel = MainTabBarViewModel(ballViewModel: ballViewModel, settingsScreenViewModel: settingsScreenViewModel, historyScreenViewModel: historyScreenViewModel)
-        let tabBarController = MainTabBarController(viewModel: tabBarViewModel)
-        
-        window?.rootViewController = tabBarController
+                
+        window?.rootViewController = AppCoordinator(dbService: coreDataStack, networkManager: networkManager, userDefaults: userDefaultsManager).createFlow()
         window?.makeKeyAndVisible()
         window?.overrideUserInterfaceStyle = .light
         return true
