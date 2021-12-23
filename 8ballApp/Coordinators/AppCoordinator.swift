@@ -10,17 +10,23 @@ import UIKit
 
 final class AppCoordinator: NavigationNode, Coordinator {
     
-    var containerViewController: UIViewController?
+    weak var containerViewController: UIViewController?
+    
+    private let window: UIWindow
     
     private let randomAnswerManager: RandomAnswerManager
     private let userDefaults: UserDefaultsManager
     private let dbService: DBService
+    private let keychainManager: KeychainManager
     
-    init(dbService: DBService, networkManager: RandomAnswerManager, userDefaults: UserDefaultsManager) {
+    init(window: UIWindow) {
         
-        self.dbService = dbService
-        self.userDefaults = userDefaults
-        self.randomAnswerManager = networkManager
+        self.window = window
+        
+        self.dbService = DBService()
+        self.userDefaults = UserDefaultsManager(defaults: UserDefaults())
+        self.randomAnswerManager = RandomAnswerManager()
+        self.keychainManager = KeychainManager()
         
         super.init(parent: nil)
     }
@@ -28,7 +34,8 @@ final class AppCoordinator: NavigationNode, Coordinator {
     func createFlow() -> UIViewController {
         let ballVC = BallScreenCoordinator(parent: self,
                                            dbService: dbService,
-                                           networkManager: randomAnswerManager).createFlow()
+                                           networkManager: randomAnswerManager,
+                                           keychainManager: keychainManager).createFlow()
         let settingsVC = SettingsScreenCoordinator(parent: self,
                                                    dbService: dbService,
                                                    userDefaults: userDefaults).createFlow()
@@ -42,6 +49,8 @@ final class AppCoordinator: NavigationNode, Coordinator {
         mainTabBarVC.tabBar.backgroundImage = UIImage()
         mainTabBarVC.tabBar.shadowImage = UIImage()
         
-        return mainTabBarVC
+        window.rootViewController = mainTabBarVC
+        window.makeKeyAndVisible()
+        return window.rootViewController!
     }
 }

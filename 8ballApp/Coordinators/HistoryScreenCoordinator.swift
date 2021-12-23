@@ -10,7 +10,7 @@ import UIKit
 
 final class HistoryScreenCoordinator: NavigationNode, Coordinator {
     
-    var containerViewController: UIViewController?
+    weak var containerViewController: UIViewController?
     
     private let dbService: DBService
 
@@ -23,6 +23,7 @@ final class HistoryScreenCoordinator: NavigationNode, Coordinator {
         let historyModel = HistoryScreenModel(dbService: dbService)
         let historyViewModel = HistoryScreenViewModel(model: historyModel)
         let historyVC = HistoryScreenViewController(viewModel: historyViewModel)
+        self.containerViewController = historyVC
         let navigationController = UINavigationController(rootViewController: historyVC)
         navigationController.tabBarItem = UITabBarItem(
             title: nil,

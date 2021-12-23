@@ -15,6 +15,7 @@ class BallViewController: UIViewController {
     
     private var isAnswerReady = false
     
+    private let countLabel = UILabel()
     private let answerLabel = UILabel()
     private let shakeButton = UIButton(type: .system)
     
@@ -45,6 +46,7 @@ class BallViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ballViewModel.clearCount()
         setupInterface()
     }
     
@@ -55,6 +57,11 @@ class BallViewController: UIViewController {
     
     @objc private func shakeButtonPressed() {
         updateInterface()
+    }
+    
+    private func getAnswerCount() {
+        let count = self.ballViewModel.getAnswerCount()
+        countLabel.text = "Answers: \(count)"
     }
     
     private func updateInterface() {
@@ -68,6 +75,7 @@ class BallViewController: UIViewController {
                 self.getAnswerAnimation()
                 self.answerLabel.text = answer
                 self.ballViewModel.saveAnswer(answer!)
+                self.getAnswerCount()
             } onError: { (error) in
                 print(error)
             } .disposed(by: self.disposeBag)
@@ -85,6 +93,7 @@ extension BallViewController {
         setupNavigationBar()
         setupTriangleImage()
         setupArc()
+        setupCountLabel()
         setupAnswerLabel()
         setupShakeButton()
     }
@@ -98,6 +107,19 @@ extension BallViewController {
         guard let navBar = navigationController?.navigationBar else { return }
         navBar.setBackgroundImage(UIImage(), for: .default)
         navBar.shadowImage = UIImage()
+    }
+    
+    private func setupCountLabel() {
+        countLabel.textAlignment = .center
+        countLabel.textColor = UIColor(asset: Asset.secondaryColor)
+        countLabel.font = UIFont.systemFont(ofSize: 14)
+        countLabel.numberOfLines = 0
+        countLabel.isHidden = true
+        view.addSubview(countLabel)
+        countLabel.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self.view.safeAreaLayoutGuide.snp.centerX)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).inset(30)
+        }
     }
 
     // The function to setup the main label on the screen
@@ -183,6 +205,7 @@ extension BallViewController {
         let options: UIView.AnimationOptions = [.curveEaseInOut]
         
         self.answerLabel.isHidden = true
+        self.countLabel.isHidden = true
         self.arcView.isHidden = false
         
         UIView.animateKeyframes(withDuration: 1.5, delay: 0, options: [.repeat, .autoreverse]) { [weak self] in
@@ -201,6 +224,7 @@ extension BallViewController {
             } completion: { _ in
                 if self.isAnswerReady {
                     self.answerLabel.isHidden = false
+                    self.countLabel.isHidden = false
                     self.arcView.isHidden = true
                 } else {
                     self.getAnswerAnimation()

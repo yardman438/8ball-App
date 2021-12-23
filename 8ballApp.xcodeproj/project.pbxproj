@@ -40,6 +40,7 @@
 		5ED7B80C273FF6CE00E0A6FF /* BallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED7B80B273FF6CE00E0A6FF /* BallViewModel.swift */; };
 		5ED7B8132740F1FB00E0A6FF /* SettingsScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED7B8122740F1FB00E0A6FF /* SettingsScreenModel.swift */; };
 		5ED7B81A27412C7700E0A6FF /* SettingsScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED7B81927412C7700E0A6FF /* SettingsScreenViewModel.swift */; };
+		5EEE3CC62771D70900195AA1 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEE3CC52771D70900195AA1 /* KeychainManager.swift */; };
 		5EF5544F27467AB9008B9A85 /* SettingsScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF5544E27467AB9008B9A85 /* SettingsScreenTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		5ED7B8122740F1FB00E0A6FF /* SettingsScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenModel.swift; sourceTree = "<group>"; };
 		5ED7B81927412C7700E0A6FF /* SettingsScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenViewModel.swift; sourceTree = "<group>"; };
 		5EE72D18274AFCB400CFB886 /* homework6-Concurrency.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "homework6-Concurrency.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		5EEE3CC52771D70900195AA1 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		5EF5544E27467AB9008B9A85 /* SettingsScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenTableViewCell.swift; sourceTree = "<group>"; };
 		7B686E88BC272317583FF2C3 /* Pods-8ballApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-8ballApp.debug.xcconfig"; path = "Target Support Files/Pods-8ballApp/Pods-8ballApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D912A59C906BA86BBFA239DF /* Pods-8ballApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-8ballApp.release.xcconfig"; path = "Target Support Files/Pods-8ballApp/Pods-8ballApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		5E6E49F7274F5D6000E34743 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				5EEE3CC52771D70900195AA1 /* KeychainManager.swift */,
 				5E6E4A07274F678C00E34743 /* Models */,
 				5E9C8DFF274FDD1E00BA40BF /* UserDefaultsManager.swift */,
 				5E6E49F8274F5D7400E34743 /* DBService.swift */,
@@ -212,6 +215,8 @@
 		5E9C8E3527555FAA00BA40BF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				5E5CCCFE271F21D9001F7212 /* AppDelegate.swift */,
+				5E5A7255277043BF00D11DF9 /* NavigationNode.swift */,
 				5E9C8E3627555FBC00BA40BF /* Formatters.swift */,
 			);
 			path = Helpers;
@@ -228,8 +233,6 @@
 		5EE10C3B273D5DB4001B2B81 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5E5CCCFE271F21D9001F7212 /* AppDelegate.swift */,
-				5E5A7255277043BF00D11DF9 /* NavigationNode.swift */,
 				5E5CCD0C271F21DB001F7212 /* Info.plist */,
 				5E641C92273DA9D700DE0972 /* Localizable.strings */,
 				5E641C8F273DA82500DE0972 /* Assets.swift */,
@@ -469,6 +472,7 @@
 				5EF5544F27467AB9008B9A85 /* SettingsScreenTableViewCell.swift in Sources */,
 				5E9C8E00274FDD1E00BA40BF /* UserDefaultsManager.swift in Sources */,
 				5E5A724E276FD20900D11DF9 /* AppCoordinator.swift in Sources */,
+				5EEE3CC62771D70900195AA1 /* KeychainManager.swift in Sources */,
 				5E641C90273DA82500DE0972 /* Assets.swift in Sources */,
 				5E6E49CB274E66F200E34743 /* HistoryScreenTableViewCell.swift in Sources */,
 				5E5CCCFF271F21D9001F7212 /* AppDelegate.swift in Sources */,

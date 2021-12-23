@@ -8,17 +8,20 @@
 
 import Foundation
 import RxSwift
+import KeychainSwift
 
 final class BallModel {
     
     private let randomAnswerManager: NetworkManager
     private let dbService: DBService
+    private let keychainManager: KeychainManager
     
     private let disposeBag = DisposeBag()
     
-    init(networkManager: RandomAnswerManager, dbService: DBService) {
+    init(networkManager: RandomAnswerManager, dbService: DBService, keychainManager: KeychainManager) {
         self.randomAnswerManager = networkManager
         self.dbService = dbService
+        self.keychainManager = keychainManager
     }
     
     func fetchData() -> Observable<String?> {
@@ -37,5 +40,13 @@ final class BallModel {
     
     func saveAnswer(_ answer: Answer) {
         self.dbService.saveAnswers(answers: [answer])
+    }
+    
+    func getAnswerCount() -> Int {
+        keychainManager.getCount()
+    }
+    
+    func clearCount() {
+        keychainManager.clearCount()
     }
 }

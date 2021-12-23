@@ -10,12 +10,15 @@ import UIKit
 
 final class SettingsScreenCoordinator: NavigationNode, Coordinator {
     
-    var containerViewController: UIViewController?
+    weak var containerViewController: UIViewController?
     
     private let userDefaults: UserDefaultsManager
     private let dbService: DBService
     
-    init(parent:NavigationNode, dbService: DBService, userDefaults: UserDefaultsManager) {
+    init(parent: NavigationNode,
+         dbService: DBService,
+         userDefaults: UserDefaultsManager) {
+        
         self.dbService = dbService
         self.userDefaults = userDefaults
         super.init(parent: parent)
@@ -25,6 +28,7 @@ final class SettingsScreenCoordinator: NavigationNode, Coordinator {
         let settingsScreenModel = SettingsScreenModel(dbService: dbService, userDefaults: userDefaults)
         let settingsScreenViewModel = SettingsScreenViewModel(model: settingsScreenModel)
         let settingsScreenVC = SettingsScreenViewController(viewModel: settingsScreenViewModel)
+        self.containerViewController = settingsScreenVC
         let navigationController = UINavigationController(rootViewController: settingsScreenVC)
         navigationController.tabBarItem = UITabBarItem(
             title: nil,

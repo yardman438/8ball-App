@@ -12,5 +12,6 @@ target '8ballApp' do
   pod 'SnapKit', '~> 5.0.1'
   pod 'RxSwift', '~> 6.2.0'
   pod 'RxCocoa', '~> 6.2.0'
+  pod 'KeychainSwift', '~> 19.0'
   
 end

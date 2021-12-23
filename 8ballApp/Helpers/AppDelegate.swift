@@ -12,16 +12,14 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    private var appCoordinator: AppCoordinator!
     var coreDataStack = DBService()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
                 
-        let userDefaultsManager = UserDefaultsManager(defaults: UserDefaults.standard)
-        let networkManager = RandomAnswerManager()
-                
-        window?.rootViewController = AppCoordinator(dbService: coreDataStack, networkManager: networkManager, userDefaults: userDefaultsManager).createFlow()
-        window?.makeKeyAndVisible()
+        appCoordinator = AppCoordinator(window: window!)
+        appCoordinator.createFlow()
         window?.overrideUserInterfaceStyle = .light
         return true
     }

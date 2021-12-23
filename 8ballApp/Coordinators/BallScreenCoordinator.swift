@@ -10,21 +10,30 @@ import UIKit
 
 final class BallScreenCoordinator: NavigationNode, Coordinator {
     
-    var containerViewController: UIViewController?
+    weak var containerViewController: UIViewController?
     
     private let randomAnswerManager: RandomAnswerManager
     private let dbService: DBService
+    private let keychainManager: KeychainManager
     
-    init(parent: NavigationNode, dbService: DBService, networkManager: RandomAnswerManager) {
+    init(parent: NavigationNode,
+         dbService: DBService,
+         networkManager: RandomAnswerManager,
+         keychainManager: KeychainManager) {
+        
         self.dbService = dbService
         self.randomAnswerManager = networkManager
+        self.keychainManager = keychainManager
         super.init(parent: parent)
     }
     
     func createFlow() -> UIViewController {
-        let ballModel = BallModel(networkManager: randomAnswerManager, dbService: dbService)
+        let ballModel = BallModel(networkManager: randomAnswerManager,
+                                  dbService: dbService,
+                                  keychainManager: keychainManager)
         let ballViewModel = BallViewModel(model: ballModel)
         let ballVC = BallViewController(viewModel: ballViewModel)
+        self.containerViewController = ballVC
         let navigationController = UINavigationController(rootViewController: ballVC)
         navigationController.tabBarItem = UITabBarItem(
             title: L10n.title,
