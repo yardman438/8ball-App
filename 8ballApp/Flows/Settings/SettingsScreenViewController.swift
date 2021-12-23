@@ -148,7 +148,7 @@ extension SettingsScreenViewController: UITableViewDelegate, UITableViewDataSour
         guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: SettingsScreenTableViewCell.identifier,
                 for: indexPath) as? SettingsScreenTableViewCell else { return UITableViewCell() }
-        let customAnswer = settingsScreenViewModel.defaultAnswers[indexPath.row]
+        let customAnswer = settingsScreenViewModel.defaultAnswers[indexPath.row].uppercased()
         cell.configureLabel(text: customAnswer)
         return cell
     }

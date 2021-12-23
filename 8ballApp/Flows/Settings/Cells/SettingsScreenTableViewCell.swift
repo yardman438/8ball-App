@@ -15,7 +15,7 @@ class SettingsScreenTableViewCell: UITableViewCell {
     private let customAnswerLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(asset: Asset.textColor)
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.font = UIFont.systemFont(ofSize: 12)
         return label
     }()
     

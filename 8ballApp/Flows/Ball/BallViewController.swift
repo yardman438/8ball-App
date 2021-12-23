@@ -15,6 +15,7 @@ class BallViewController: UIViewController {
     
     private var isAnswerReady = false
     
+    private let countLabel = UILabel()
     private let answerLabel = UILabel()
     private let shakeButton = UIButton(type: .system)
     
@@ -32,7 +33,7 @@ class BallViewController: UIViewController {
         return view
     }()
     
-    private var ballViewModel: BallViewModel
+    var ballViewModel: BallViewModel
     
     init(viewModel: BallViewModel) {
         self.ballViewModel = viewModel
@@ -45,6 +46,7 @@ class BallViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ballViewModel.clearCount()
         setupInterface()
     }
     
@@ -55,6 +57,11 @@ class BallViewController: UIViewController {
     
     @objc private func shakeButtonPressed() {
         updateInterface()
+    }
+    
+    private func getAnswerCount() {
+        let count = self.ballViewModel.getAnswerCount()
+        countLabel.text = "Answers: \(count)"
     }
     
     private func updateInterface() {
@@ -68,6 +75,7 @@ class BallViewController: UIViewController {
                 self.getAnswerAnimation()
                 self.answerLabel.text = answer
                 self.ballViewModel.saveAnswer(answer!)
+                self.getAnswerCount()
             } onError: { (error) in
                 print(error)
             } .disposed(by: self.disposeBag)
@@ -77,18 +85,19 @@ class BallViewController: UIViewController {
 // MARK: Interface setup
 
 extension BallViewController {
-    
+
     // The main function to setup interface
     private func setupInterface() {
         view.backgroundColor = UIColor(asset: Asset.backgroundColor)
-        
+
         setupNavigationBar()
         setupTriangleImage()
         setupArc()
+        setupCountLabel()
         setupAnswerLabel()
         setupShakeButton()
     }
-    
+
     // The function to setup the navigation bar
     private func setupNavigationBar() {
         let logo = UIImage(asset: Asset._8Ball)
@@ -100,6 +109,19 @@ extension BallViewController {
         navBar.shadowImage = UIImage()
     }
     
+    private func setupCountLabel() {
+        countLabel.textAlignment = .center
+        countLabel.textColor = UIColor(asset: Asset.secondaryColor)
+        countLabel.font = UIFont.systemFont(ofSize: 14)
+        countLabel.numberOfLines = 0
+        countLabel.isHidden = true
+        view.addSubview(countLabel)
+        countLabel.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self.view.safeAreaLayoutGuide.snp.centerX)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).inset(30)
+        }
+    }
+
     // The function to setup the main label on the screen
     private func setupAnswerLabel() {
         answerLabel.text = L10n.bootQuestion
@@ -115,7 +137,7 @@ extension BallViewController {
             make.width.lessThanOrEqualTo(140)
         }
     }
-    
+
     // The function to setup the CTA-button on the screen
     private func setupShakeButton() {
         shakeButton.setTitle(L10n.mainButtonCTA, for: .normal)
@@ -131,7 +153,7 @@ extension BallViewController {
         }
         shakeButton.addTarget(self, action: #selector(shakeButtonPressed), for: .touchUpInside)
     }
-    
+
     // The function to setup the image on the background of the answerLabel
     private func setupTriangleImage() {
         view.addSubview(triangleView)
@@ -140,7 +162,7 @@ extension BallViewController {
             make.height.width.equalTo(240)
         }
     }
-    
+
     // The function to setup the shape on the top of the screen
     private func setupArc() {
         view.addSubview(arcView)
@@ -183,6 +205,7 @@ extension BallViewController {
         let options: UIView.AnimationOptions = [.curveEaseInOut]
         
         self.answerLabel.isHidden = true
+        self.countLabel.isHidden = true
         self.arcView.isHidden = false
         
         UIView.animateKeyframes(withDuration: 1.5, delay: 0, options: [.repeat, .autoreverse]) { [weak self] in
@@ -201,6 +224,7 @@ extension BallViewController {
             } completion: { _ in
                 if self.isAnswerReady {
                     self.answerLabel.isHidden = false
+                    self.countLabel.isHidden = false
                     self.arcView.isHidden = true
                 } else {
                     self.getAnswerAnimation()

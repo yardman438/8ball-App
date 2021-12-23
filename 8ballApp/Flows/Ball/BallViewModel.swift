@@ -37,4 +37,12 @@ class BallViewModel {
         let newAnswer = Answer(text: answer, date: Date(), isLocal: false)
         ballModel.saveAnswer(newAnswer)
     }
+    
+    func getAnswerCount() -> String {
+        String(ballModel.getAnswerCount())
+    }
+    
+    func clearCount() {
+        ballModel.clearCount()
+    }
 }
