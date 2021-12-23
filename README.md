@@ -1,4 +1,4 @@
-
+![Image alt](https://github.com/yardman438/8ballApp/raw/feature/homework11/8ballApp_cover.jpg)
 # 8 BALL APP
 
 Application for solving complex Yes / No questions.
