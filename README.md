@@ -1,4 +1,4 @@
-![Image alt](https://github.com/yardman438/8ballApp/raw/feature/homework11/8ballApp_cover.jpg)
+![Image alt](https://github.com/yardman438/8ballApp/raw/develop/8ballApp_cover.jpg)
 # OVERVIEW
 
 This is a project that I did while taking courses from the Yalantis school.
@@ -8,7 +8,7 @@ Ask a question -> Shake the device -> Get an answer
 
 You can also use your custom answers and view the answers history.
 
-![Image alt](https://github.com/yardman438/8ballApp/raw/feature/homework11/8ballApp_screens-present.png)
+![Image alt](https://github.com/yardman438/8ballApp/raw/develop/8ballApp_screens-present.png)
 
 ## Project details:
 
