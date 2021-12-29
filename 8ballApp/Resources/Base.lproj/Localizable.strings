@@ -1,0 +1,39 @@
+/* 
+  Localizable.strings
+  8ballApp
+
+  Created by Sergey Dvornik on 11.11.2021.
+  
+*/
+
+//Services
+"fromAPI" = "from API";
+"defaults-key" = "defaultAnswersArray";
+
+//CustomAnswers
+"justdoit" = "Just do it!";
+"ithinkitsyes" = "I think it's yes!";
+"no" = "No.";
+"idontthinkso" = "I don't think so...";
+"shakeitagain" = "Shake it again.";
+"yesyoucandoit" = "Yes, you can do it!";
+"maybedont" = "Maybe don't";
+"thisisgonnahappen" = "This is gonna happen";
+
+//BallViewController
+"title" = "8 BALL";
+"boot-question" = "Have a question?";
+"main-buttonCTA" = "Shake it or tap here!";
+
+//SettingsScreenViewController
+"settings-title" = "Settings";
+"alert-title" = "Enter your answer";
+"alert-save" = "Save";
+"alert-cancel" = "Cancel";
+"identifier" = "cell";
+"screen-title" = "Custom answers";
+"add-buttonCTA" = "Add custom answer";
+
+//HistoryScreenViewController
+"history-title" = "History";
+"history-identifier" = "historyCell";

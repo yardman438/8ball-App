@@ -1,0 +1,11 @@
+strings:
+  inputs: 8ballApp/Resources/Base.lproj
+  outputs:
+    - templateName: structured-swift5
+      output: 8ballApp/Resources/Strings.swift
+xcassets:
+  inputs: 8ballApp/Resources/Assets.xcassets
+  outputs:
+    - templateName: swift5
+      output: 8ballApp/Resources/Assets.swift
+
